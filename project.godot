@@ -33,6 +33,10 @@ window/stretch/aspect="keep_height"
 
 enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
 
+[global_group]
+
+food=""
+
 [gui]
 
 theme/custom_font="uid://briskctqaevp3"

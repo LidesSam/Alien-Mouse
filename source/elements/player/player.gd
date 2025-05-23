@@ -141,6 +141,7 @@ func _physics_process(delta):
 			
 	# Run FSM logic
 	fsm.fsmUpdate(delta)	
+	
 func hurt(points):	
 	lp-=points
 	if lp<=0:
