@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b8gl8i8gqem0j"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b8gl8i8gqem0j"]
 
 [ext_resource type="Texture2D" uid="uid://wgoivnuhvea5" path="res://assets/sprites/world/tileset.png" id="1_8chaf"]
 [ext_resource type="PackedScene" uid="uid://b4ck6ckecb8ry" path="res://source/elements/items/food-item.tscn" id="2_fwdj3"]
+[ext_resource type="Texture2D" uid="uid://2i43h6hf4pll" path="res://assets/sprites/world/slopes-tileset.png" id="3_wvrn0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwdj3"]
 texture = ExtResource("1_8chaf")
@@ -39,8 +40,31 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wvrn0"]
 scenes/1/scene = ExtResource("2_fwdj3")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fx45l"]
+texture = ExtResource("3_wvrn0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.4462, -16, -10.4462)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.4462, -16, -10.4462)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.4462, -16, -10.4462)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -3.18631, 16, -3.18631, 16, 3.50494, -16, 3.18631)
+0:1/0/physics_layer_0/polygon_0/one_way = true
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -3.18631, 16, -3.18631, 16, 3.50494, -16, 3.18631)
+1:1/0/physics_layer_0/polygon_0/one_way = true
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -3.18631, 16, -3.18631, 16, 3.50494, -16, 3.18631)
+2:1/0/physics_layer_0/polygon_0/one_way = true
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fwdj3")
 sources/1 = SubResource("TileSetScenesCollectionSource_wvrn0")
+sources/2 = SubResource("TileSetAtlasSource_fx45l")
