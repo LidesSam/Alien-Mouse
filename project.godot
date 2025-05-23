@@ -14,9 +14,22 @@ config/name="AlienMouse"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://source/system/Global.gd"
+ScreenTransition="*res://source/system/screenTransition.tscn"
+Musicbox="*res://source/system/musicbox.tscn"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
+
+[gui]
+
+theme/custom_font="uid://briskctqaevp3"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 
 [rendering]
 
