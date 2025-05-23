@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwweia0ir1jok"]
+
+[ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="1_gsaqs"]
+[ext_resource type="Script" uid="uid://dbcahqcn8scj5" path="res://source/scenes/main_menu.gd" id="2_g3dnu"]
+[ext_resource type="Texture2D" uid="uid://dkqp2nolux5q8" path="res://assets/sprites/system/background-tile-square-w.png" id="2_wf2tm"]
+[ext_resource type="Texture2D" uid="uid://0cnyxviktxxb" path="res://assets/sprites/system/play-button/play-btn-normal.png" id="3_g3dnu"]
+[ext_resource type="Texture2D" uid="uid://1kxn88t42pbw" path="res://assets/sprites/system/play-button/play-btn-hover.png" id="4_jx8sb"]
+[ext_resource type="Texture2D" uid="uid://brdycnc2rhp05" path="res://assets/sprites/system/play-button/play-btn-pressed.png" id="5_5nkv3"]
+
+[node name="mainMenu" type="Control"]
+material = ExtResource("1_gsaqs")
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_g3dnu")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 704.0
+offset_bottom = 512.0
+texture = ExtResource("2_wf2tm")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+use_parent_material = true
+anchor_mode = 0
+
+[node name="playBtn" type="TextureButton" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_g3dnu")
+texture_pressed = ExtResource("4_jx8sb")
+texture_hover = ExtResource("5_5nkv3")
+
+[node name="Label" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 144.0
+offset_top = 64.0
+offset_right = 496.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 24
+text = "Alien Mouse"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="playBtn" to="." method="_on_play_btn_pressed"]

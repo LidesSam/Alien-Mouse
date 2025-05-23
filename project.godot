@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="AlienMouse"
+run/main_scene="res://source/scenes/mainMenu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,13 @@ config/icon="res://icon.svg"
 Global="*res://source/system/Global.gd"
 ScreenTransition="*res://source/system/screenTransition.tscn"
 Musicbox="*res://source/system/musicbox.tscn"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
