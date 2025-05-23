@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=11 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
 [ext_resource type="PackedScene" uid="uid://bvmn7yyoi8cj6" path="res://source/elements/player/mouse.tscn" id="2_05xs6"]
 [ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="4_duyfd"]
+[ext_resource type="Texture2D" uid="uid://cji4j8g4pi67o" path="res://assets/sprites/system/background-bands.png" id="5_a6jo6"]
+[ext_resource type="Texture2D" uid="uid://cegw4bu1nh2yx" path="res://assets/sprites/system/solid-block.png" id="6_kxd5n"]
+[ext_resource type="Texture2D" uid="uid://c4pcsxy26t701" path="res://assets/sprites/system/back-button/back-btn-normal.png" id="7_arjnj"]
+[ext_resource type="Texture2D" uid="uid://b3oysgc2k8qno" path="res://assets/sprites/system/back-button/back-btn-pressed.png" id="8_rdarv"]
 
 [sub_resource type="Shader" id="2"]
 code = "shader_type canvas_item;
@@ -72,3 +76,60 @@ position = Vector2(313, 158)
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("4_duyfd")
+
+[node name="gameover" type="TextureRect" parent="."]
+visible = false
+offset_right = 640.0
+offset_bottom = 322.0
+texture = ExtResource("5_a6jo6")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="gameover"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 248.0
+texture = ExtResource("6_kxd5n")
+
+[node name="backBtn" type="Button" parent="gameover"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 72.0
+offset_right = 496.0
+offset_bottom = 112.0
+text = "x"
+
+[node name="replayBtn" type="TextureButton" parent="gameover"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 160.0
+offset_right = 384.0
+offset_bottom = 224.0
+texture_normal = ExtResource("7_arjnj")
+texture_pressed = ExtResource("7_arjnj")
+texture_hover = ExtResource("8_rdarv")
+
+[node name="pause" type="TextureRect" parent="."]
+visible = false
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 192.0
+texture = ExtResource("6_kxd5n")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="pause"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 88.0
+text = "pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="gameover/backBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="gameover/replayBtn" to="." method="_on_replay_btn_pressed"]
