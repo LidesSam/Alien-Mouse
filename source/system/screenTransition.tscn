@@ -89,9 +89,9 @@ libraries = {
 
 [node name="blackout" type="TextureRect" parent="anim"]
 material = ExtResource("4_0brhw")
-offset_top = 648.0
+offset_top = 640.0
 offset_right = 1840.0
-offset_bottom = 1296.0
+offset_bottom = 1288.0
 mouse_filter = 2
 texture = ExtResource("5_lgq6m")
 stretch_mode = 1
