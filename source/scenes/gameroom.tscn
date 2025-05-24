@@ -85,10 +85,6 @@ anchor_mode = 0
 [node name="shiploader" parent="extraElements" instance=ExtResource("3_js0ax")]
 position = Vector2(320, 208)
 
-[node name="mouse" parent="extraElements" instance=ExtResource("2_05xs6")]
-material = SubResource("ShaderMaterial_d68g1")
-position = Vector2(321, 206)
-
 [node name="item" parent="extraElements" instance=ExtResource("5_5qihy")]
 position = Vector2(368, 216)
 
@@ -100,6 +96,10 @@ position = Vector2(272, 216)
 
 [node name="item4" parent="extraElements" instance=ExtResource("5_5qihy")]
 position = Vector2(240, 216)
+
+[node name="mouse" parent="extraElements" instance=ExtResource("2_05xs6")]
+material = SubResource("ShaderMaterial_d68g1")
+position = Vector2(321, 206)
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("4_duyfd")

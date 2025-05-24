@@ -124,6 +124,10 @@ func _physics_process(delta):
 			
 	# Run FSM logic
 	fsm.fsmUpdate(delta)	
+	$lblFood.text=str(foodTrail.size())
+	if(velocity!=Vector2.ZERO):
+		push_trail_position(position)
+	
 func handle_tilemap_collision(collision):
 	#check collision with tilemap
 			var collision_pos = collision.get_position()
@@ -180,7 +184,18 @@ func sidemove():
 		velocity.x=0
 	else:
 		velocity.x=speed*d
+	
+	
+func push_trail_position(position):
+	var pos = position
+	var lastpos = null
+	for t in foodTrail:
+		if lastpos != null:
+			pos = lastpos
+		lastpos = t.position
+		t.position = pos
 
+		
 func set_hud(HUD):
 	hud=HUD
 	

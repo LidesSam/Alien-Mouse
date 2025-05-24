@@ -1,8 +1,6 @@
 extends Area2D
 
-@onready var follow=false
 var player=null
-
 
 func _process(delta: float) -> void:
 	pass
@@ -14,6 +12,7 @@ func to_ship():
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("player")):
+	if(body.is_in_group("player") and !player):
 		picked()
+		player=body
 		body.foodTrail.push_back(self)

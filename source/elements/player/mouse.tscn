@@ -252,3 +252,9 @@ offset_bottom = -17.0
 position = Vector2(0, 8)
 enabled = false
 target_position = Vector2(16, 0)
+
+[node name="lblFood" type="Label" parent="."]
+offset_left = 7.0
+offset_top = -6.0
+offset_right = 22.0
+offset_bottom = 10.0
