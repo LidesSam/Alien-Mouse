@@ -11,10 +11,13 @@ var hud=null
 var maxlp=3
 var lp=0
 
-
+var gpos=Vector2(4,4)
+var gridOffset=Vector2(16,16)
+var gridzone =null
 var death=false
 var dying=false
 var awaiting = true
+var move = true
 
 @onready var fsm = $fsm
 @onready var animation=$AnimatedSprite2D
@@ -23,12 +26,54 @@ func _ready() -> void:
 	fsm.autoload(self)
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addGlobalTransition("die",isDying)
+	fsm.startState()
+	fsm.set_debug_on($Label)
 	
+func _process(delta: float) -> void:
+	fsm.fsmUpdate(delta)
+	
+func _input(event):		
+	fsm.handleInput(event)
+	
+		
 func move_input():
-	pass
-	
-	
+	#if(move):
+		print("ship:mp:",gpos)
+		if Input.is_action_just_pressed("ui_right"):
+			move_to_cell(gpos + Vector2.RIGHT)
+		elif Input.is_action_just_pressed("ui_left"):
+			move_to_cell(gpos + Vector2.LEFT)
+		elif Input.is_action_just_pressed("ui_up"):
+			move_to_cell(gpos + Vector2.UP)
+		elif Input.is_action_just_pressed("ui_down"):
+			move_to_cell(gpos + Vector2.DOWN)
 
+func move_to_cell(target_cell: Vector2):
+	
+	print("ship:gpos:",gpos)
+	gpos = target_cell
+	print("ship:gpos:",gpos)
+	set_Grid_Pos()
+
+func set_Grid_Pos():
+	# Clamp grid position within bounds
+	gpos.x = clamp(gpos.x, 0, gridzone.gridsize.x - 1)
+	gpos.y = clamp(gpos.y, 0, gridzone.gridsize.y - 1)
+
+	# Apply movement to node position
+	position = gpos * 32+gridOffset
+
+	# Restart movement cooldown timer
+	move = false
+	$moveTimer.start()
+
+	# Update parent node display
+#	get_parent().update_data_display()
+
+func get_Grid_Pos():
+	return gpos
+
+	
 
 func isDying():
 	return dying
@@ -39,3 +84,8 @@ func isNotAwaiting():
 #----
 func wait_over():
 	awaiting=false
+
+
+func _on_move_timer_timeout() -> void:
+	move = true  # Re-enable movement after timer delay
+	pass # Replace with function body.

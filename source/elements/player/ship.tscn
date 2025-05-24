@@ -63,14 +63,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg5y5"]
 size = Vector2(16, 16)
 
-[node name="ship" type="CharacterBody2D"]
+[node name="ship" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_qg5y5")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 16.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("1_osdak")
@@ -80,6 +76,12 @@ texture = ExtResource("2_5whrt")
 material = ExtResource("3_k8c1q")
 sprite_frames = SubResource("SpriteFrames_jsy1o")
 animation = &"down"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = -16.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qg5y5")
@@ -98,3 +100,8 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 [node name="die" type="Node" parent="fsm"]
 script = ExtResource("7_u8wy5")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="moveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="moveTimer" to="." method="_on_move_timer_timeout"]

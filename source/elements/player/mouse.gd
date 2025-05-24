@@ -159,14 +159,6 @@ func hurt(points):
 func _input(event):		
 	fsm.handleInput(event)
 	
-	#if  event.is_action_pressed("ui_left"):
-	#	d=-1
-	#	velocity.x=-100 
-	#	$AnimatedSprite.flip_h=false# invert afther remove pkaceholder
-	#else:
-	#	if  event.is_action_pressed("ui_right"):
-	#		velocity.x=100 
-	#		$AnimatedSprite.flip_h=true# invert afther remove pkaceholder
 		
 func jumpInput():
 	if( Input.is_action_just_pressed("ui_back")):
