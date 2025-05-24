@@ -4,8 +4,7 @@ extends Node2D
 
 @onready  var gridsize:Vector2i = Vector2i(9,9)
 var grid: Array = []
-var wave=0
-var atack=0
+var triggered : Array = []
 
 func _ready() -> void:
 	# Initialize the 2D array
@@ -19,7 +18,23 @@ func _ready() -> void:
 			grid[x].append(bb)
 			grid[x][y]=bb
 
-func free_all():
-	for b in grid:
-		b.release()
+func release_all():
+	for col in grid:
+		for bb in col:
+			bb.release()
+	
+func trigger_marked():
+	for bb in triggered:
+		bb.trigger()
+	triggered=[]
+	
+func random_atk():
+	triggered=[]
+	while triggered.size() < 6:
+		var rx = randi() % gridsize.x
+		var ry = randi() % gridsize.y
+		var bb = grid[rx][ry]
+		if !triggered.has(bb):
+			bb.mark()
+			triggered.append(bb)
 	

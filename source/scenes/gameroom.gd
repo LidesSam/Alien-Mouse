@@ -18,7 +18,7 @@ func _ready():
 	fsm.autoload(self)
 	fsm.addStateTransition("startStage","platformStage",isCoundownOver)
 	fsm.addStateTransition("platformStage","spaceStage",shiploader.isLoaded)
-	
+	fsm.addStateTransition("spaceStage","platformStage",spacePhase.phase_ended)
 	fsm.startState()
 
 func isCoundownOver():

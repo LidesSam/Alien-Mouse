@@ -36,17 +36,15 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 script = ExtResource("7_omqk7")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="wTimer" type="Timer" parent="fsm/warning"]
-wait_time = 3.0
-one_shot = true
+[node name="timer" type="Timer" parent="fsm/warning"]
+wait_time = 2.0
 
 [node name="trigger" type="Node" parent="fsm"]
 script = ExtResource("8_wa2y0")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="tTimer" type="Timer" parent="fsm/trigger"]
-wait_time = 3.0
-one_shot = true
+[node name="timer" type="Timer" parent="fsm/trigger"]
+wait_time = 2.0
 
 [node name="die" type="Node" parent="fsm"]
 script = ExtResource("4_wvaj0")
@@ -54,9 +52,3 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="ship" parent="." instance=ExtResource("5_wvaj0")]
 position = Vector2(144, 144)
-
-[node name="lblstate" type="Label" parent="."]
-offset_left = 288.0
-offset_top = 72.0
-offset_right = 376.0
-offset_bottom = 112.0

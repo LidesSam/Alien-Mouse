@@ -5,12 +5,12 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	release()
+	
 func mark():
-	animation.play("bump")	
+	animation.play("warning")	
 	
 func trigger():
 	animation.play("bump")	
-	
 	
 func release():
 	animation.play("idle")	

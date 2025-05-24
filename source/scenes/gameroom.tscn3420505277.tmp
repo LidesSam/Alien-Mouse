@@ -191,7 +191,6 @@ offset_right = 640.0
 offset_bottom = 40.0
 
 [node name="backCountdown" type="TextureRect" parent="hud"]
-visible = false
 offset_left = 256.0
 offset_top = 64.0
 offset_right = 384.0

@@ -8,6 +8,7 @@ func next_stage():
 	loaded=false
 	minCharge+=1
 	food=0
+	update_charge()
 	
 func collect_food(player):
 	food += player.get_food()
