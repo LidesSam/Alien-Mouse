@@ -78,10 +78,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmfpu"]
 
-[node name="bumperblock" type="CharacterBody2D" groups=["hazard"]]
+[node name="bumperblock" type="Area2D" groups=["hazard"]]
 collision_layer = 16
 collision_mask = 16
-motion_mode = 1
 script = ExtResource("1_c6lhj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -93,4 +92,5 @@ frame_progress = 0.525118
 shape = SubResource("RectangleShape2D_hmfpu")
 disabled = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

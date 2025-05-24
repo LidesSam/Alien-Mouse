@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var animation=$AnimatedSprite2D
 @onready var colliderShape=$CollisionShape2D
@@ -19,4 +19,11 @@ func release():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if(animation.animation=="bump"):
 		colliderShape.disabled=false
+	pass # Replace with function body.
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("player")):
+		body.modulate ="#f00"
+		release()
 	pass # Replace with function body.
