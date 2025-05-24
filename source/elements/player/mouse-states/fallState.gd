@@ -4,7 +4,7 @@ func enter(actowner):
 	super(actowner)
 	actowner.inGround=false
 	actowner.sideCollisionSensor.enabled=false
-	actowner.play_animation("falling")
+	actowner.play_animation("jumping")
 	
 
 func handleInput(actowner,event):

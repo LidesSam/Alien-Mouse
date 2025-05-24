@@ -1,15 +1,33 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvmn7yyoi8cj6"]
+[gd_scene load_steps=34 format=3 uid="uid://bvmn7yyoi8cj6"]
 
 [ext_resource type="Material" uid="uid://cfw22j60uh028" path="res://assets/shaders/crab.tres" id="1_y8l4u"]
 [ext_resource type="Script" uid="uid://ccy0ilii8w84w" path="res://source/elements/player/mouse.gd" id="2_ug5mo"]
 [ext_resource type="Texture2D" uid="uid://mk5v067s0h02" path="res://assets/sprites/player/alien-mouse-idle.png" id="2_w63ee"]
 [ext_resource type="Texture2D" uid="uid://yxpgkwfxr1ay" path="res://assets/sprites/player/mouse-walk.png" id="3_f0x1i"]
+[ext_resource type="Texture2D" uid="uid://cdwv1nghgvbox" path="res://assets/sprites/player/alien-mouse-drop-down.png" id="3_ptx0n"]
 [ext_resource type="Texture2D" uid="uid://cwu54g80u0ifo" path="res://assets/sprites/player/alien-mouse-victory.png" id="4_ug5mo"]
+[ext_resource type="Texture2D" uid="uid://6miyeq6jf4xl" path="res://assets/sprites/player/alien-mouse-jumping.png" id="5_gnbo2"]
 [ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="6_q5fv5"]
 [ext_resource type="Script" uid="uid://dep1u8rguv3lm" path="res://source/elements/player/mouse-states/waitState.gd" id="7_c7y45"]
 [ext_resource type="Script" uid="uid://dhmwt0bhvie7y" path="res://source/elements/player/mouse-states/idleState.gd" id="8_28exu"]
 [ext_resource type="Script" uid="uid://c3dkjjtgt88lx" path="res://source/elements/player/mouse-states/jumpState.gd" id="9_ptx0n"]
 [ext_resource type="Script" uid="uid://bjgtpcqiswpc7" path="res://source/elements/player/mouse-states/fallState.gd" id="10_gnbo2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tf38"]
+atlas = ExtResource("3_ptx0n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7psb"]
+atlas = ExtResource("3_ptx0n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayj4b"]
+atlas = ExtResource("3_ptx0n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjm30"]
+atlas = ExtResource("3_ptx0n")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5fv5"]
 atlas = ExtResource("2_w63ee")
@@ -19,9 +37,21 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_w63ee")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3x4pp"]
-atlas = ExtResource("3_f0x1i")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3dqu"]
+atlas = ExtResource("5_gnbo2")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2psdk"]
+atlas = ExtResource("5_gnbo2")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urbd4"]
+atlas = ExtResource("5_gnbo2")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpg3c"]
+atlas = ExtResource("5_gnbo2")
+region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1diea"]
 atlas = ExtResource("4_ug5mo")
@@ -63,6 +93,23 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4tf38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7psb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayj4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjm30")
+}],
+"loop": true,
+"name": &"dropdown",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q5fv5")
 }, {
 "duration": 1.0,
@@ -74,7 +121,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3x4pp")
+"texture": SubResource("AtlasTexture_q3dqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2psdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urbd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpg3c")
 }],
 "loop": true,
 "name": &"jumping",
@@ -143,7 +199,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3cce"]
 size = Vector2(10, 16)
 
-[node name="mouse" type="CharacterBody2D"]
+[node name="mouse" type="CharacterBody2D" groups=["player"]]
 material = ExtResource("1_y8l4u")
 script = ExtResource("2_ug5mo")
 
@@ -151,6 +207,7 @@ script = ExtResource("2_ug5mo")
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_w6ip8")
 animation = &"jumping"
+frame_progress = 0.0372479
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -177,7 +234,7 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
-target_position = Vector2(0, 11)
+target_position = Vector2(0, 4)
 
 [node name="lblanim" type="Label" parent="."]
 offset_left = -20.0

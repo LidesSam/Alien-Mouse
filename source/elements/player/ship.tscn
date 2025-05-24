@@ -64,6 +64,8 @@ animations = [{
 size = Vector2(16, 16)
 
 [node name="ship" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_qg5y5")
 
 [node name="Label" type="Label" parent="."]

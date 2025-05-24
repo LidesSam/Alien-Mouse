@@ -33,6 +33,7 @@ var awaiting = true
 @onready var sideCollisionSensor=$RayCastSide
 @onready var dmgCooldown = $Timer
 @onready var wasDamaged = false
+var foodTrail:Array=[]
 
 func _ready():
 	animation.flip_h=true
@@ -45,7 +46,6 @@ func _ready():
 	fsm.addGlobalTransition("die",isDying)
 	
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
-	fsm.addStateTransition("jump","idle",isOnGround)
 	fsm.addStateTransition("fall","idle",isOnGround)
 	
 	fsm.addStateTransition("idle","fall",isFalling)
@@ -101,7 +101,6 @@ func _physics_process(delta):
 	if(!isDying()):
 		if(!hit_a_wall()):
 			gravity_step()
-
 		# Update grounded state from raycast
 		var raycollider = $RayCast2D.get_collider()
 		inGround = raycollider != null and raycollider == tilemap
@@ -109,31 +108,38 @@ func _physics_process(delta):
 		# Move character using Godot's built-in method
 		if(!hit_a_wall()):
 			move_and_slide()
-
-		if !hit_a_wall() and sideCollisionSensor.enabled:
-			#modulate = "#ff0"  # yellow while checking
-			sideCollisionSensor.force_raycast_update()
-			if sideCollisionSensor.is_colliding():
-				#modulate = "#f0f"  # pink when colliding
-				justHitWall = true
+		
+		#unused right now but gonna for a future greature
+		#handle_wall_collision()
+		
 		# Check for collisions (e.g., item pickups)
 		# Failsafe hazard check on collision position
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
+			handle_tilemap_collision(collision)
+			
+			
+	# Run FSM logic
+	fsm.fsmUpdate(delta)	
+func handle_tilemap_collision(collision):
+	#check collision with tilemap
 			var collision_pos = collision.get_position()
 			var tile_pos = tilemap.local_to_map(collision_pos)
-			print("cheking group")
 			var tile_data = tilemap.get_cell_tile_data(tile_pos)
-			
 			if tile_data:
 				if(tile_data.get_custom_data("group") ):
 					if tile_data.get_custom_data("group") == "hazard" and !isDying():
 						print("dying:",dying)
 						dying = true
 						print("dying p:",dying)
-			
-	# Run FSM logic
-	fsm.fsmUpdate(delta)	
+	
+func handle_wall_collision():
+	if !hit_a_wall() and sideCollisionSensor.enabled:
+			#modulate = "#ff0"  # yellow while checking
+			sideCollisionSensor.force_raycast_update()
+			if sideCollisionSensor.is_colliding():
+				#modulate = "#f0f"  # pink when colliding
+				justHitWall = true
 func hurt(points):	
 	lp-=points
 	if lp<=0:
@@ -183,7 +189,14 @@ func play_animation(animName):
 	$lblanim.text= str("anim:"+animName)
 	animation.play(animName)
 
-			
+	
+func get_food():
+	var fp= foodTrail.size()
+	for f in foodTrail:
+		f.to_ship()
+	foodTrail=[]
+	return fp
+		
 func pick_item(item):
 		match(item.itemName):
 			"coin":
