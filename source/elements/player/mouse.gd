@@ -126,10 +126,11 @@ func _physics_process(delta):
 			var tile_data = tilemap.get_cell_tile_data(tile_pos)
 			
 			if tile_data:
-				if tile_data.get_custom_data("group") == "hazard" and !isDying():
-					print("dying:",dying)
-					dying = true
-					print("dying p:",dying)
+				if(tile_data.get_custom_data("group") ):
+					if tile_data.get_custom_data("group") == "hazard" and !isDying():
+						print("dying:",dying)
+						dying = true
+						print("dying p:",dying)
 			
 	# Run FSM logic
 	fsm.fsmUpdate(delta)	

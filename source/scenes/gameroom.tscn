@@ -1,16 +1,23 @@
-[gd_scene load_steps=14 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=21 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
 [ext_resource type="PackedScene" uid="uid://bvmn7yyoi8cj6" path="res://source/elements/player/mouse.tscn" id="2_05xs6"]
+[ext_resource type="PackedScene" uid="uid://daw5a70carqjw" path="res://source/elements/elements/shiploader.tscn" id="3_js0ax"]
 [ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="4_duyfd"]
+[ext_resource type="PackedScene" uid="uid://b4ck6ckecb8ry" path="res://source/elements/items/food-item.tscn" id="5_5qihy"]
 [ext_resource type="Texture2D" uid="uid://cji4j8g4pi67o" path="res://assets/sprites/system/background-bands.png" id="5_a6jo6"]
-[ext_resource type="Script" uid="uid://cvh3cy8mhw4ie" path="res://addons/fsmgear/source/FsmTransition.gd" id="5_rdarv"]
 [ext_resource type="Texture2D" uid="uid://cegw4bu1nh2yx" path="res://assets/sprites/system/solid-block.png" id="6_kxd5n"]
 [ext_resource type="Texture2D" uid="uid://c4pcsxy26t701" path="res://assets/sprites/system/back-button/back-btn-normal.png" id="7_arjnj"]
+[ext_resource type="Script" uid="uid://bhyoetncj2nd5" path="res://source/scenes/gameroomStates/startStageState.gd" id="7_gv763"]
 [ext_resource type="Texture2D" uid="uid://b3oysgc2k8qno" path="res://assets/sprites/system/back-button/back-btn-pressed.png" id="8_rdarv"]
+[ext_resource type="Script" uid="uid://c5vpy0j4jskta" path="res://source/scenes/gameroomStates/PlatformStageState.gd" id="8_yn5ug"]
+[ext_resource type="Script" uid="uid://4symumvyoai2" path="res://source/scenes/gameroomStates/SpaceStagePhaseState.gd" id="9_5nmkf"]
 [ext_resource type="PackedScene" uid="uid://t0vrfeucc3rs" path="res://source/elements/elements/spacephase.tscn" id="9_arjnj"]
+[ext_resource type="Script" uid="uid://bl1gyuxvygk7n" path="res://source/scenes/gameroomStates/lossStageState.gd" id="10_5nmkf"]
 [ext_resource type="PackedScene" uid="uid://d04x6pnkk63th" path="res://source/elements/timeleft.tscn" id="11_js0ax"]
+[ext_resource type="Script" uid="uid://u116pol1nq5o" path="res://source/scenes/gameroomStates/completeStageState.gd" id="11_wmdd4"]
+[ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
 
 [sub_resource type="Shader" id="2"]
 code = "shader_type canvas_item;
@@ -73,16 +80,49 @@ tile_set = ExtResource("1_vq24a")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="mouse" parent="." instance=ExtResource("2_05xs6")]
+[node name="extraElements" type="Node2D" parent="."]
+
+[node name="shiploader" parent="extraElements" instance=ExtResource("3_js0ax")]
+position = Vector2(320, 208)
+
+[node name="mouse" parent="extraElements" instance=ExtResource("2_05xs6")]
 material = SubResource("ShaderMaterial_d68g1")
-position = Vector2(313, 158)
+position = Vector2(321, 206)
+
+[node name="item" parent="extraElements" instance=ExtResource("5_5qihy")]
+position = Vector2(368, 216)
+
+[node name="item2" parent="extraElements" instance=ExtResource("5_5qihy")]
+position = Vector2(392, 216)
+
+[node name="item3" parent="extraElements" instance=ExtResource("5_5qihy")]
+position = Vector2(272, 216)
+
+[node name="item4" parent="extraElements" instance=ExtResource("5_5qihy")]
+position = Vector2(240, 216)
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("4_duyfd")
 
-[node name="wa" type="Node" parent="fsm"]
-script = ExtResource("5_rdarv")
+[node name="startStage" type="Node" parent="fsm"]
+script = ExtResource("7_gv763")
 metadata/_custom_type_script = "uid://cvh3cy8mhw4ie"
+
+[node name="platformStage" type="Node" parent="fsm"]
+script = ExtResource("8_yn5ug")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="spaceStage" type="Node" parent="fsm"]
+script = ExtResource("9_5nmkf")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="lossStage" type="Node" parent="fsm"]
+script = ExtResource("10_5nmkf")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="completeStage" type="Node" parent="fsm"]
+script = ExtResource("11_wmdd4")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="gameover" type="TextureRect" parent="."]
 visible = false
@@ -142,11 +182,36 @@ uppercase = true
 visible = false
 position = Vector2(176, 16)
 
-[node name="timeleft" parent="." instance=ExtResource("11_js0ax")]
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="timeleft" parent="hud" instance=ExtResource("11_js0ax")]
 offset_left = 512.0
 offset_top = 8.0
 offset_right = 640.0
 offset_bottom = 40.0
+
+[node name="backCountdown" type="TextureRect" parent="hud"]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 192.0
+texture = ExtResource("15_bpmsf")
+
+[node name="countdown" type="Timer" parent="hud/backCountdown"]
+wait_time = 3.0
+one_shot = true
+
+[node name="label" type="Label" parent="hud/backCountdown"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="gameover/backBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="gameover/replayBtn" to="." method="_on_replay_btn_pressed"]

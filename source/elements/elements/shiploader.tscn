@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://daw5a70carqjw"]
+
+[ext_resource type="Script" uid="uid://dfjbvm3287l7x" path="res://source/elements/elements/shiploader.gd" id="1_2fo5e"]
+[ext_resource type="Texture2D" uid="uid://q8dftcxmkylo" path="res://assets/sprites/player/alien-mouse-in-ship.png" id="1_ql1vm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fo5e"]
+size = Vector2(32, 32)
+
+[node name="shiploader" type="Area2D"]
+script = ExtResource("1_2fo5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2fo5e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ql1vm")
+
+[node name="charge" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -40.0
+offset_right = 32.0
+offset_bottom = -16.0
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
