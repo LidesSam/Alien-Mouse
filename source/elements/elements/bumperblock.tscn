@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://23dojnl7kf0n"]
+[gd_scene load_steps=12 format=3 uid="uid://23dojnl7kf0n"]
 
+[ext_resource type="Script" uid="uid://d3q1hvwlmgg8q" path="res://source/elements/elements/bumperblock.gd" id="1_c6lhj"]
 [ext_resource type="Texture2D" uid="uid://gwfmu5078yup" path="res://assets/sprites/world/bumper-block.png" id="1_uwn10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6lhj"]
@@ -77,13 +78,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmfpu"]
 
-[node name="bumperblock" type="CharacterBody2D"]
+[node name="bumperblock" type="CharacterBody2D" groups=["hazard"]]
 motion_mode = 1
+script = ExtResource("1_c6lhj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7lqt1")
-animation = &"idle"
-frame_progress = 0.845678
+animation = &"bump"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hmfpu")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

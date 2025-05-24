@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=12 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cegw4bu1nh2yx" path="res://assets/sprites/system/solid-block.png" id="6_kxd5n"]
 [ext_resource type="Texture2D" uid="uid://c4pcsxy26t701" path="res://assets/sprites/system/back-button/back-btn-normal.png" id="7_arjnj"]
 [ext_resource type="Texture2D" uid="uid://b3oysgc2k8qno" path="res://assets/sprites/system/back-button/back-btn-pressed.png" id="8_rdarv"]
+[ext_resource type="PackedScene" uid="uid://t0vrfeucc3rs" path="res://source/elements/elements/spacephase.tscn" id="9_arjnj"]
 
 [sub_resource type="Shader" id="2"]
 code = "shader_type canvas_item;
@@ -130,6 +131,9 @@ text = "pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="spacephase" parent="." instance=ExtResource("9_arjnj")]
+position = Vector2(176, 16)
 
 [connection signal="pressed" from="gameover/backBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="gameover/replayBtn" to="." method="_on_replay_btn_pressed"]

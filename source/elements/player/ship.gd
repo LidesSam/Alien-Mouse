@@ -21,7 +21,7 @@ var awaiting = true
 
 func _ready() -> void:
 	fsm.autoload(self)
-	fsm.addStateTransition("wait","idle",isNotAwaiting())
+	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addGlobalTransition("die",isDying)
 	
 func move_input():

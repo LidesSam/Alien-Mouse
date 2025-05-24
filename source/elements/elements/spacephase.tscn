@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://t0vrfeucc3rs"]
+
+[ext_resource type="PackedScene" uid="uid://4kem5jttkxtw" path="res://source/elements/elements/gridzone.tscn" id="1_m5o0h"]
+[ext_resource type="Texture2D" uid="uid://cd134xo2kgiac" path="res://assets/sprites/world/star-tileset.png" id="2_14i41"]
+[ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="3_xdvey"]
+[ext_resource type="Script" uid="uid://dk6fjngxkiftm" path="res://addons/fsmgear/source/FsmState.gd" id="4_wvaj0"]
+[ext_resource type="PackedScene" uid="uid://dfi8tu52mxhyt" path="res://source/elements/player/ship.tscn" id="5_wvaj0"]
+
+[node name="spacephase" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 288.0
+offset_bottom = 288.0
+texture = ExtResource("2_14i41")
+stretch_mode = 1
+
+[node name="gridzone" parent="." instance=ExtResource("1_m5o0h")]
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("3_xdvey")
+
+[node name="wait" type="Node" parent="fsm"]
+script = ExtResource("4_wvaj0")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="start" type="Node" parent="fsm"]
+script = ExtResource("4_wvaj0")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="warning" type="Node" parent="fsm"]
+script = ExtResource("4_wvaj0")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="trigger" type="Node" parent="fsm"]
+script = ExtResource("4_wvaj0")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="die" type="Node" parent="fsm"]
+script = ExtResource("4_wvaj0")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="ship" parent="." instance=ExtResource("5_wvaj0")]
+position = Vector2(144, 144)

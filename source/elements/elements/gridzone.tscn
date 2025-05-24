@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4kem5jttkxtw"]
+
+[ext_resource type="Script" uid="uid://sn80y7q5ly23" path="res://source/elements/elements/gridzone.gd" id="1_o8wcp"]
+
+[node name="gridzone" type="Node2D"]
+script = ExtResource("1_o8wcp")

@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
 [global_group]
 
 food=""
+hazard=""
 
 [gui]
 

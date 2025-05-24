@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var colliderShape=$CollisionShape2D
 
 func _ready() -> void:
-	animation.play("idle")
+	release()
 func mark():
 	animation.play("bump")	
 	
@@ -13,8 +13,10 @@ func trigger():
 	
 	
 func release():
-	animation.play("bump")	
+	animation.play("idle")	
 	colliderShape.disabled=true
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	if(animation.animation=="bump"):
+		colliderShape.disabled=false
 	pass # Replace with function body.
