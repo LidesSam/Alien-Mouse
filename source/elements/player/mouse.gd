@@ -6,16 +6,11 @@ var DIR_RIGHT = 1
 var d=-1
 
 var speed=200
-var money=0
-
 #reftoparentNodes
-var hud=null
 var tilemap=null
 
 #lifepoints
-var maxlp=3
-var lp=0
-
+var lifebar = null
 
 var death=false
 var dying=false
@@ -29,11 +24,12 @@ var awaiting = true
 
 @onready var fsm = $fsm
 @onready var animation=$AnimatedSprite2D
-
 @onready var sideCollisionSensor=$RayCastSide
 @onready var dmgCooldown = $Timer
 @onready var wasDamaged = false
+
 var foodTrail:Array=[]
+
 
 func _ready():
 	animation.flip_h=true
@@ -57,8 +53,6 @@ func _ready():
 	
 	fsm.startState()
 	
-	maxlp =3
-	lp=3
 	
 func wait_over():
 	awaiting=false
@@ -91,15 +85,6 @@ func isDying():
 func isOnGround():
 	return inGround and !isDying()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func gravity_step():
-	velocity.y-=-9.8
-	if(velocity.y>=200):
-		velocity.y=200
-
 func _physics_process(delta):
 	if(!isDying()):
 		if(!hit_a_wall()):
@@ -121,12 +106,20 @@ func _physics_process(delta):
 			var collision = get_slide_collision(i)
 			handle_tilemap_collision(collision)
 			
-			
 	# Run FSM logic
 	fsm.fsmUpdate(delta)	
 	$lblFood.text=str(foodTrail.size())
 	if(velocity!=Vector2.ZERO):
 		push_trail_position(position)
+
+func gravity_step():
+	velocity.y-=-9.8
+	if(velocity.y>=200):
+		velocity.y=200
+
+#inputs
+func _input(event):		
+	fsm.handleInput(event)
 	
 func handle_tilemap_collision(collision):
 	#check collision with tilemap
@@ -147,19 +140,10 @@ func handle_wall_collision():
 			if sideCollisionSensor.is_colliding():
 				#modulate = "#f0f"  # pink when colliding
 				justHitWall = true
-func hurt(points):	
-	lp-=points
-	if lp<=0:
-		lp=0
-		death=true
-	if(hud!=null):
-		hud.updatelives(lp,maxlp)
+				
+
 	
 #inputs
-func _input(event):		
-	fsm.handleInput(event)
-	
-		
 func jumpInput():
 	if( Input.is_action_just_pressed("ui_back")):
 		inJump=true
@@ -177,7 +161,6 @@ func sidemove():
 	else:
 		velocity.x=speed*d
 	
-	
 func push_trail_position(position):
 	var pos = position
 	var lastpos = null
@@ -186,11 +169,7 @@ func push_trail_position(position):
 			pos = lastpos
 		lastpos = t.position
 		t.position = pos
-
 		
-func set_hud(HUD):
-	hud=HUD
-	
 func set_tilemap(tmap:TileMapLayer):
 	print("setting tilemap:",tmap.name)
 	tilemap=tmap
@@ -199,7 +178,6 @@ func play_animation(animName):
 	$lblanim.text= str("anim:"+animName)
 	animation.play(animName)
 
-	
 func get_food():
 	var fp= foodTrail.size()
 	for f in foodTrail:
@@ -207,14 +185,12 @@ func get_food():
 	foodTrail=[]
 	return fp
 		
-func pick_item(item):
-		match(item.itemName):
-			"coin":
-				money+=item.points
-				item.get_parent().remove_child(item)
-				if(hud):
-					hud.update_money(money)
-				
+func set_lifebar(bar):
+	lifebar = bar
+
+func hurt(points:int=1):	
+	lifebar.deplete(points)
+	
 func get_wasDamaged():
 	return wasDamaged
 

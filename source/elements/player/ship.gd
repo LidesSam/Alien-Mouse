@@ -4,13 +4,6 @@ var d=-1
 
 var speed=200
 
-#reftoparentNodes
-var hud=null
-
-#lifepoints
-var maxlp=3
-var lp=0
-
 var gpos=Vector2(4,4)
 var gridOffset=Vector2(16,16)
 var gridzone =null
@@ -18,6 +11,9 @@ var death=false
 var dying=false
 var awaiting = true
 var move = true
+
+#lifepoints
+var lifebar = null
 
 @onready var fsm = $fsm
 @onready var animation=$AnimatedSprite2D
@@ -41,12 +37,16 @@ func move_input():
 		print("ship:mp:",gpos)
 		if Input.is_action_just_pressed("ui_right"):
 			move_to_cell(gpos + Vector2.RIGHT)
+			animation.play("right")
 		elif Input.is_action_just_pressed("ui_left"):
 			move_to_cell(gpos + Vector2.LEFT)
+			animation.play("left")
 		elif Input.is_action_just_pressed("ui_up"):
 			move_to_cell(gpos + Vector2.UP)
+			animation.play("down")
 		elif Input.is_action_just_pressed("ui_down"):
 			move_to_cell(gpos + Vector2.DOWN)
+			animation.play("up")
 
 func move_to_cell(target_cell: Vector2):
 	
@@ -84,8 +84,14 @@ func isNotAwaiting():
 #----
 func wait_over():
 	awaiting=false
+	
+func set_lifebar(bar):
+	lifebar = bar
 
-
+func hurt(points:int=1):	
+	lifebar.deplete(points)
+	animation.play("hurt")
+	
 func _on_move_timer_timeout() -> void:
 	move = true  # Re-enable movement after timer delay
 	pass # Replace with function body.

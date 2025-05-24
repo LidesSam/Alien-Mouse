@@ -8,6 +8,10 @@ func enter(actowner):
 	#actowner.material = Global.currentShadder
 	actowner.countdown.start()
 	actowner.countdownback.show()
+	actowner.player.set_lifebar(actowner.lifebar)
+	actowner.spacePhase.player.set_lifebar(actowner.lifebar)
+	actowner.lifebar.full_refill()
+	
 	#actowner.update_hud()
 	#actowner.auto_set_shadder()
 	

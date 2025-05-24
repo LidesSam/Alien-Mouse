@@ -24,6 +24,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("player")):
-		body.modulate ="#f00"
+		print("cbn:",body)
+		print("cbn:",body.name)
+		body.hurt()
 		release()
 	pass # Replace with function body.

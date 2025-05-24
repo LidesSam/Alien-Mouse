@@ -11,7 +11,7 @@ extends Node2D
 @onready var countdownLbl =$hud/backCountdown/label
 
 @onready var endPopup = $gameover
-
+@onready var lifebar = $poinbar
 
 
 func _ready():
@@ -37,4 +37,9 @@ func _on_back_btn_pressed() -> void:
 
 func _on_replay_btn_pressed() -> void:
 	ScreenTransition.change_scene_to_file("res://source/scenes/gameroom.tscn")
+	pass # Replace with function body.
+
+
+func _on_poinbar_lpchange() -> void:
+	$hud/lbllp.text=str(lifebar.gp,"/",lifebar.maxGp)
 	pass # Replace with function body.

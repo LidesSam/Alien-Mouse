@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfi8tu52mxhyt"]
+[gd_scene load_steps=19 format=3 uid="uid://dfi8tu52mxhyt"]
 
 [ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="1_osdak"]
 [ext_resource type="Script" uid="uid://cn3dyc4m4jtjp" path="res://source/elements/player/ship.gd" id="1_qg5y5"]
@@ -12,6 +12,22 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kshl"]
 atlas = ExtResource("4_qg5y5")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsy1o"]
+atlas = ExtResource("4_qg5y5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5epca"]
+atlas = ExtResource("4_qg5y5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1pdh"]
+atlas = ExtResource("4_qg5y5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o57co"]
+atlas = ExtResource("4_qg5y5")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8wy5"]
 atlas = ExtResource("4_qg5y5")
@@ -34,6 +50,23 @@ animations = [{
 "loop": true,
 "name": &"down",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsy1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5epca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1pdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o57co")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -75,7 +108,8 @@ texture = ExtResource("2_5whrt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_k8c1q")
 sprite_frames = SubResource("SpriteFrames_jsy1o")
-animation = &"down"
+animation = &"hurt"
+frame_progress = 0.00654021
 
 [node name="Label" type="Label" parent="."]
 offset_left = -24.0
