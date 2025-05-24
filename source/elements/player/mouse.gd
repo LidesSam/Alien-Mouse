@@ -44,6 +44,7 @@ func _ready():
 	fsm.set_debug_on($lblstate)
 	
 	fsm.addGlobalTransition("die",isDying)
+	fsm.addGlobalTransition("wait",isWaiting)
 	
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addStateTransition("fall","idle",isOnGround)
@@ -64,6 +65,8 @@ func wait_over():
 	
 func isNotAwaiting():
 	return !awaiting
+func isWaiting():
+	return awaiting
 #state flags function
 func isFalling():
 	return !isOnGround() and velocity.y>0

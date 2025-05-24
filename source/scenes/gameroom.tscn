@@ -178,7 +178,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="spacephase" parent="." instance=ExtResource("9_arjnj")]
+[node name="spacePhase" parent="." instance=ExtResource("9_arjnj")]
 visible = false
 position = Vector2(176, 16)
 

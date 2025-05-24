@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = $extraElements/mouse
 @onready var shiploader = $extraElements/shiploader
+@onready var spacePhase = $spacePhase
 @onready var tilemap= $TileMap
 @onready var fsm = $fsm
 
