@@ -1,3 +1,54 @@
-# Godot 4+ specific ignores
+# Godot-specific folders
 .godot/
-/android/
+.import/
+.export/
+mono/
+
+# Exported projects and build artifacts
+export/
+build/
+key/
+
+# Godot Android build
+.android/
+.gradle/
+build/
+*.apk
+*.aab
+
+# Godot iOS build
+ios/
+*.xcodeproj
+*.xcworkspace
+*.xcuserstate
+*.xcuserdata
+
+# Godot keys or sensitive files
+.key/
+*.key
+
+# System/Editor
+*.db
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+
+# C# / Mono (if used)
+*.csproj
+*.sln
+*.user
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.pidb
+*.suo
+*.svd
+*.nupkg
+*.tar.gz
+*.vs/
