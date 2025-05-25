@@ -310,12 +310,14 @@ position = Vector2(0, 16)
 target_position = Vector2(0, 4)
 
 [node name="lblanim" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = -4.0
 
 [node name="lblstate" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -33.0
 offset_right = 20.0

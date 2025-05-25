@@ -3,7 +3,7 @@ extends Control
 @onready var started =false
 signal timeout
 func  _process(delta: float) -> void:
-	$Label.text = str("%03d" % round($Timer.time_left))
+	$Label.text = str("%02d" % round($Timer.time_left))
 
 
 func start(secs=30):
