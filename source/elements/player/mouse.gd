@@ -117,8 +117,6 @@ func _physics_process(delta):
 	# Run FSM logic
 	fsm.fsmUpdate(delta)	
 	$lblFood.text=str(foodTrail.size())
-	if(velocity!=Vector2.ZERO):
-		push_trail_position(position)
 
 func gravity_step():
 	velocity.y-=-9.8
@@ -205,3 +203,8 @@ func get_wasDamaged():
 func _on_Timer_timeout():
 	wasDamaged=false
 	
+
+
+func _on_food_trail_step_timeout() -> void:
+	if(velocity!=Vector2.ZERO):
+		push_trail_position(position)

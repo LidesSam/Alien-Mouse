@@ -6,6 +6,7 @@ var spawnPoint=null
 
 func _ready() -> void:
 	$Sprite2D.frame=randi()%3
+	$AnimationPlayer.play("idle")
 
 func _process(delta: float) -> void:
 	pass
