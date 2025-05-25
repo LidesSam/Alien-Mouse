@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf7wiy8j38x0s"]
+
+[ext_resource type="Script" uid="uid://kmsotgyo7gid" path="res://source/elements/elements/spawn_point.gd" id="1_r3a2q"]
+[ext_resource type="Texture2D" uid="uid://dkqp2nolux5q8" path="res://assets/sprites/system/background-tile-square-w.png" id="2_rxelm"]
+
+[node name="spawnPoint" type="Marker2D" groups=["spawnpoints"]]
+script = ExtResource("1_r3a2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rxelm")

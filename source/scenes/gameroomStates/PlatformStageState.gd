@@ -9,9 +9,11 @@ func enter(actowner):
 		actowner.player.show()
 		actowner.countdownback.hide()
 		actowner.timeleft.start(20)
+		actowner.spawn_food()
 	else:
 		actowner.victory=true
-
+func update(actowner,delta):
+		actowner.spawn_food()
 func exit(actowner):
 	super(actowner)
 	actowner.timeleft.stop()

@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b8gl8i8gqem0j"]
 
 [ext_resource type="Texture2D" uid="uid://wgoivnuhvea5" path="res://assets/sprites/world/tileset.png" id="1_8chaf"]
-[ext_resource type="PackedScene" uid="uid://b4ck6ckecb8ry" path="res://source/elements/items/food-item.tscn" id="2_fwdj3"]
+[ext_resource type="PackedScene" uid="uid://cf7wiy8j38x0s" path="res://source/elements/elements/spawn_point.tscn" id="3_fx45l"]
 [ext_resource type="Texture2D" uid="uid://2i43h6hf4pll" path="res://assets/sprites/world/slopes-tileset.png" id="3_wvrn0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwdj3"]
@@ -37,9 +37,6 @@ texture_region_size = Vector2i(32, 32)
 0:5/0 = 0
 1:5/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wvrn0"]
-scenes/1/scene = ExtResource("2_fwdj3")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fx45l"]
 texture = ExtResource("3_wvrn0")
 texture_region_size = Vector2i(32, 32)
@@ -62,9 +59,14 @@ texture_region_size = Vector2i(32, 32)
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -3.18631, 16, -3.18631, 16, 3.50494, -16, 3.18631)
 2:1/0/physics_layer_0/polygon_0/one_way = true
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lre8k"]
+resource_name = "spawnPoints"
+scenes/1/scene = ExtResource("3_fx45l")
+scenes/1/display_placeholder = ExtResource("3_fx45l")
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fwdj3")
-sources/1 = SubResource("TileSetScenesCollectionSource_wvrn0")
 sources/2 = SubResource("TileSetAtlasSource_fx45l")
+sources/4 = SubResource("TileSetScenesCollectionSource_lre8k")

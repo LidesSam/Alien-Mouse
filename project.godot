@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
 food=""
 hazard=""
 player=""
+spawnpoints=""
 
 [gui]
 
