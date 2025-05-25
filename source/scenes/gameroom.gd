@@ -57,7 +57,7 @@ func get_spawn_point_tiles():
 
 func spawn_food():
 	
-	while $extraElements/food.get_child_count()<3:
+	while $extraElements/food.get_child_count()-player.foodTrail.size()<3:
 		var fi = foodTemp.instantiate()
 		if(freeSpawnedPoints.size()<=0):
 			freeSpawnedPoints = spawnedPoints.duplicate()

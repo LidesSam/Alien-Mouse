@@ -21,7 +21,7 @@
 [ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
 
-[sub_resource type="Shader" id="1"]
+[sub_resource type="Shader" id="Shader_lro37"]
 code = "shader_type canvas_item;
 uniform vec4 light : source_color;
 uniform vec4 normal : source_color;
@@ -62,7 +62,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nmkf"]
 resource_local_to_scene = true
-shader = SubResource("1")
+shader = SubResource("Shader_lro37")
 shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
 shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
 shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)
