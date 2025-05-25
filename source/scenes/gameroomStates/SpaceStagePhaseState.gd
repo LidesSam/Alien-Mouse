@@ -11,4 +11,4 @@ func enter(actonwer):
 	
 func exit(actowner):
 	actowner.spacePhase.hide()
-	actowner.shiploader.next_stage()
+	

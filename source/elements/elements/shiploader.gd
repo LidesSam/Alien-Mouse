@@ -4,9 +4,9 @@ var loaded=false
 var minCharge=3
 var food=0
 
-func next_stage():
+func next_stage(stage):
 	loaded=false
-	minCharge+=3
+	minCharge=3*stage
 	food=0
 	update_charge()
 	

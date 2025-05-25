@@ -15,7 +15,6 @@ script = ExtResource("1_am2s7")
 
 [node name="MusicPlayerA" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_0xuh0")
-volume_db = -15.0
 
 [node name="MusicPlayerB" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0xuh0")

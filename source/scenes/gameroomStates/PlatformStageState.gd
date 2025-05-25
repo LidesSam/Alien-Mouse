@@ -12,6 +12,7 @@ func enter(actowner):
 		actowner.player.show()
 		actowner.countdownback.hide()
 		actowner.timeleft.start(20)
+		actowner.shiploader.next_stage(actowner.stage)
 		actowner.spawn_food()
 	else:
 		actowner.victory=true

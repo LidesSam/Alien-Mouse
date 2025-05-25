@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://daw5a70carqjw"]
+[gd_scene load_steps=6 format=3 uid="uid://daw5a70carqjw"]
 
 [ext_resource type="Script" uid="uid://dfjbvm3287l7x" path="res://source/elements/elements/shiploader.gd" id="1_2fo5e"]
+[ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="1_2618b"]
 [ext_resource type="Texture2D" uid="uid://q8dftcxmkylo" path="res://assets/sprites/player/alien-mouse-in-ship.png" id="1_ql1vm"]
 [ext_resource type="AudioStream" uid="uid://ccceaxhis2vvg" path="res://assets/sfx/power-up.wav" id="3_f3kev"]
 
@@ -8,6 +9,7 @@
 size = Vector2(32, 32)
 
 [node name="shiploader" type="Area2D"]
+material = ExtResource("1_2618b")
 script = ExtResource("1_2fo5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
