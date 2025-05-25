@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=25 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
@@ -22,57 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://dbyilsb02ydgl" path="res://assets/sfx/victory.wav" id="13_m8n7p"]
 [ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
-
-[sub_resource type="Shader" id="1"]
-code = "shader_type canvas_item;
-uniform vec4 light : source_color;
-uniform vec4 normal : source_color;
-uniform vec4 shade : source_color;
-uniform vec4 outline : source_color;
-
-uniform vec4 swapLight : source_color;
-uniform vec4 swapNormal : source_color;
-uniform vec4 swapShade : source_color;
-uniform vec4 swapOutline : source_color;
-
-const float precision = 0.1;
-
-
-void fragment(){
-	vec4 current_color = texture(TEXTURE,UV);
-		if(distance(current_color,light)<=precision){
-			COLOR = swapLight;
-		}
-		else if(distance(current_color,normal)<=precision){
-			COLOR = swapNormal;
-		}
-		
-		else if(distance(current_color,shade)<=precision){
-			COLOR = swapShade;
-		}
-		else if(distance(current_color,outline)<=precision){
-			COLOR = swapOutline;
-		}
-		else{
-			COLOR = current_color;
-		}
-		
-		
-}
-
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8n7p"]
-resource_local_to_scene = true
-shader = SubResource("1")
-shader_parameter/light = Color(0.921569, 0.827451, 1, 1)
-shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
-shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)
-shader_parameter/outline = Color(0.12549, 0.12549, 0.12549, 1)
-shader_parameter/swapLight = Color(1, 0.984314, 0.576471, 1)
-shader_parameter/swapNormal = Color(0.843137, 0.560784, 0.560784, 1)
-shader_parameter/swapShade = Color(0.537255, 0.992157, 0.619608, 1)
-shader_parameter/swapOutline = Color(0, 0, 0, 1)
 
 [sub_resource type="Shader" id="Shader_lro37"]
 code = "shader_type canvas_item;
@@ -140,7 +89,6 @@ anchor_mode = 0
 [node name="extraElements" type="Node2D" parent="."]
 
 [node name="shiploader" parent="extraElements" instance=ExtResource("3_js0ax")]
-material = SubResource("ShaderMaterial_m8n7p")
 position = Vector2(320, 208)
 
 [node name="food" type="Node2D" parent="extraElements"]

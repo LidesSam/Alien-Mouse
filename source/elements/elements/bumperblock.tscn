@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://23dojnl7kf0n"]
+[gd_scene load_steps=13 format=3 uid="uid://23dojnl7kf0n"]
 
 [ext_resource type="Script" uid="uid://d3q1hvwlmgg8q" path="res://source/elements/elements/bumperblock.gd" id="1_c6lhj"]
+[ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="1_np30n"]
 [ext_resource type="Texture2D" uid="uid://gwfmu5078yup" path="res://assets/sprites/world/bumper-block.png" id="1_uwn10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6lhj"]
@@ -79,14 +80,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmfpu"]
 
 [node name="bumperblock" type="Area2D" groups=["hazard"]]
+material = ExtResource("1_np30n")
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_c6lhj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_7lqt1")
-animation = &"warning"
-frame_progress = 0.525118
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hmfpu")

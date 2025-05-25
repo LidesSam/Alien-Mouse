@@ -16,6 +16,7 @@ script = ExtResource("1_2fo5e")
 shape = SubResource("RectangleShape2D_2fo5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("1_ql1vm")
 
 [node name="charge" type="Label" parent="."]
