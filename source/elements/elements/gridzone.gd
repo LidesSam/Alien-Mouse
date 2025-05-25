@@ -28,13 +28,51 @@ func trigger_marked():
 		bb.trigger()
 	triggered=[]
 	
-func random_atk():
+func random_atk(stage):
 	triggered=[]
-	while triggered.size() < 6:
+	while triggered.size() < 12*stage:
 		var rx = randi() % gridsize.x
 		var ry = randi() % gridsize.y
 		var bb = grid[rx][ry]
 		if !triggered.has(bb):
 			bb.mark()
 			triggered.append(bb)
+
+func col_or_row_atk(stage):
+	if(randi()%2==1):
+		row_atk(stage)
+	else:
+		column_atk(stage)
+
+func row_atk(stage):
+	var rows =[]
+	while rows.size()<stage*2:
+		var r = randi()%gridsize.y
+		if r not in rows:
+			rows.append(r)
+
+	triggered=[]
+	while rows.size()>0:
+		var x =rows.pop_front()
+		for y in range(gridsize.y):
+			var bb = grid[x][y]
+			if !triggered.has(bb):
+				bb.mark()
+				triggered.append(bb)
+				
+func column_atk(stage):
+	var cols =[]
+	while cols.size()<stage*2:
+		var r = randi()%gridsize.x
+		if r not in cols:
+			cols.append(r)
+	triggered=[]
+	while cols.size()>0:
+		var y =cols.pop_front()
+		for x in range(gridsize.x):
+			var bb = grid[x][y]
+			if !triggered.has(bb):
+				bb.mark()
+				triggered.append(bb)		
+
 	

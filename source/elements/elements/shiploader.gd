@@ -14,7 +14,7 @@ func collect_food(player):
 	food += player.get_food()
 	update_charge()
 	#replace for button action only and player "mouse", contact
-	if(food>minCharge):
+	if(food>=minCharge):
 		loaded=true
 
 func update_charge():

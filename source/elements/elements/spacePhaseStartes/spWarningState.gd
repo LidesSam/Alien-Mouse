@@ -11,7 +11,18 @@ func enter(actowner):
 		actowner.end_phase()
 		actowner.atk=0
 	else:
-		actowner.gridzone.random_atk()
+		match actowner.stage:
+			1:
+				actowner.gridzone.random_atk(actowner.stage)
+			2:
+				actowner.gridzone.col_or_row_atk(actowner.stage)
+			_:
+				if(randi()%2==0):
+					actowner.gridzone.random_atk(actowner.stage)
+				else:
+					actowner.gridzone.col_or_row_atk(actowner.stage)
+		#
+		actowner.gridzone.col_or_row_atk(actowner.stage)
 		warningTime.start()
 		
 func warning_over():

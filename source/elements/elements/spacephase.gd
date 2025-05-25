@@ -7,6 +7,9 @@ var atk=0
 @onready var fsm = $fsm
 @onready var gridzone= $gridzone
 @onready var player=$ship
+
+var stage =1
+
 func _ready() -> void:
 	fsm.autoload(self)
 	fsm.set_debug_on($lblstate)
