@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvmn7yyoi8cj6"]
+[gd_scene load_steps=44 format=3 uid="uid://bvmn7yyoi8cj6"]
 
 [ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="1_gnbo2"]
 [ext_resource type="Script" uid="uid://ccy0ilii8w84w" path="res://source/elements/player/mouse.gd" id="2_ug5mo"]
 [ext_resource type="Texture2D" uid="uid://mk5v067s0h02" path="res://assets/sprites/player/alien-mouse-idle.png" id="2_w63ee"]
 [ext_resource type="Texture2D" uid="uid://yxpgkwfxr1ay" path="res://assets/sprites/player/mouse-walk.png" id="3_f0x1i"]
 [ext_resource type="Texture2D" uid="uid://cdwv1nghgvbox" path="res://assets/sprites/player/alien-mouse-drop-down.png" id="3_ptx0n"]
+[ext_resource type="Texture2D" uid="uid://ch1d7otql50tu" path="res://assets/sprites/player/alien-mouse-dmg.png" id="3_tjm30"]
 [ext_resource type="Texture2D" uid="uid://cwu54g80u0ifo" path="res://assets/sprites/player/alien-mouse-victory.png" id="4_ug5mo"]
 [ext_resource type="Texture2D" uid="uid://6miyeq6jf4xl" path="res://assets/sprites/player/alien-mouse-jumping.png" id="5_gnbo2"]
 [ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="6_q5fv5"]
@@ -13,8 +14,26 @@
 [ext_resource type="Script" uid="uid://c3dkjjtgt88lx" path="res://source/elements/player/mouse-states/jumpState.gd" id="9_ptx0n"]
 [ext_resource type="Script" uid="uid://bjgtpcqiswpc7" path="res://source/elements/player/mouse-states/fallState.gd" id="10_gnbo2"]
 [ext_resource type="AudioStream" uid="uid://8j1fkfe787o5" path="res://assets/sfx/stepOn.wav" id="11_a7psb"]
+[ext_resource type="Script" uid="uid://cu46tdqyrlt7v" path="res://source/elements/player/mouse-states/dmgState.gd" id="11_q3dqu"]
+[ext_resource type="AudioStream" uid="uid://dacm8we0o2clg" path="res://assets/sfx/Ship_Hit.wav" id="12_q3dqu"]
 [ext_resource type="AudioStream" uid="uid://qu60f75ovtcu" path="res://assets/sfx/jump.wav" id="13_ayj4b"]
 [ext_resource type="Script" uid="uid://iptxmysskwgp" path="res://source/elements/player/mouse-states/victoryState.gd" id="13_gnbo2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqxjc"]
+atlas = ExtResource("3_tjm30")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbyse"]
+atlas = ExtResource("3_tjm30")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swd6i"]
+atlas = ExtResource("3_tjm30")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3j4t"]
+atlas = ExtResource("3_tjm30")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tf38"]
 atlas = ExtResource("3_ptx0n")
@@ -94,6 +113,35 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w6ip8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqxjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swd6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3j4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqxjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbyse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swd6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3j4t")
+}],
+"loop": false,
+"name": &"dmg",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4tf38")
@@ -209,7 +257,8 @@ script = ExtResource("2_ug5mo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_w6ip8")
-animation = &"victory"
+animation = &"dmg"
+frame_progress = 0.0768749
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -221,6 +270,16 @@ script = ExtResource("6_q5fv5")
 [node name="wait" type="Node" parent="fsm"]
 script = ExtResource("7_c7y45")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="dmg" type="Node" parent="fsm"]
+script = ExtResource("11_q3dqu")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="dmgsfx" type="AudioStreamPlayer2D" parent="fsm/dmg"]
+stream = ExtResource("12_q3dqu")
+volume_db = 5.0
+pitch_scale = 3.0
+attenuation = 5.27801
 
 [node name="idle" type="Node" parent="fsm"]
 script = ExtResource("8_28exu")
@@ -251,14 +310,12 @@ position = Vector2(0, 16)
 target_position = Vector2(0, 4)
 
 [node name="lblanim" type="Label" parent="."]
-visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = -4.0
 
 [node name="lblstate" type="Label" parent="."]
-visible = false
 offset_left = -20.0
 offset_top = -33.0
 offset_right = 20.0
@@ -280,4 +337,5 @@ offset_bottom = 10.0
 wait_time = 0.1
 autostart = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="foodTrailStep" to="." method="_on_food_trail_step_timeout"]

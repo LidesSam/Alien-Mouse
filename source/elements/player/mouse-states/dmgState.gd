@@ -1,42 +1,21 @@
-extends "res://src/objects/Fsm/FsmState.gd"
+extends "res://addons/fsmgear/source/FsmState.gd"
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var downFlag=false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	StateName="dmg"
-	pass # Replace with function body.
 
 func enter(actowner):
-	StateName="dmg"
-	actowner.play_animation("dmg")
-
-	if(actowner.dmgCooldown.is_stopped()):
-		actowner.dmgCooldown.start()
-	actowner.velocity.x=0
-	.enter(actowner)
-
-
-
-func handleInput(actowner):
-	actowner.jumpInput()
+	super(actowner)
+	actowner.animation.play("dmg")
+	actowner.velocity=Vector2.ZERO
+	if($dmgsfx):
+		$dmgsfx.play()
+		$dmgsfx.pitch_scale= 1.0 + (randi()%5-2)*0.2
 	
+func handleInput(actowner,event):
+	super(actowner,event)
 	
-
 
 func update(actowner,delta):
-#	actowner.sidemove()
-	
-	
-	if (actowner.get_wasDamaged()==false):
-		parentFsm.change_to_state("walk")	
-		
+	super(actowner,delta)
 		
 func exit(actowner):
-	
-	print("exitState:",StateName)
-	pass
+	super(actowner)

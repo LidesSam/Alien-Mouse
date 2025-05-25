@@ -96,5 +96,6 @@ func _on_poinbar_lpchange() -> void:
 
 func _on_timeleft_timeout() -> void:
 	lifebar.deplete(1)
-	timeleft.start(5)
+	player.timeover()
+	timeleft.start(10)
 	pass # Replace with function body.

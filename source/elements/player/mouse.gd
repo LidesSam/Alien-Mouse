@@ -30,7 +30,6 @@ var win = false
 
 var foodTrail:Array=[]
 
-
 func _ready():
 	animation.flip_h=true
 	velocity= Vector2(0,100)
@@ -42,12 +41,15 @@ func _ready():
 	fsm.addGlobalTransition("die",isDying)
 	fsm.addGlobalTransition("wait",isWaiting)
 	fsm.addGlobalTransition("victory",inVictory)
+	fsm.addGlobalTransition("dmg",in_dmg)
 	
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addStateTransition("fall","idle",isOnGround)
 	
 	fsm.addStateTransition("idle","fall",isFalling)
 	fsm.addStateTransition("jump","fall",isFalling)
+	
+	fsm.addStateTransition("dmg","idle",not_in_dmg)
 	
 	fsm.addStateTransition("idle","jump",inJumping)
 	
@@ -57,14 +59,21 @@ func _ready():
 	
 func wait_over():
 	awaiting=false
-	
+
 func victory():
 	wait_over()
 	win=true	
 	
 func inVictory():
 	return  isNotAwaiting() and win
-	
+
+func in_dmg():
+	return wasDamaged and !inVictory()
+func not_in_dmg():
+	return !wasDamaged
+
+func timeover():
+	wasDamaged=true
 func isNotAwaiting():
 	return !awaiting
 func isWaiting():
@@ -200,11 +209,15 @@ func hurt(points:int=1):
 func get_wasDamaged():
 	return wasDamaged
 
-func _on_Timer_timeout():
-	wasDamaged=false
 	
 
 
 func _on_food_trail_step_timeout() -> void:
 	if(velocity!=Vector2.ZERO):
 		push_trail_position(position)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if(animation.animation=="dmg"):
+		wasDamaged=false
+	pass # Replace with function body.
