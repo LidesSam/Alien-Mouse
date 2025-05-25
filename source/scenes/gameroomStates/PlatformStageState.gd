@@ -3,6 +3,7 @@ extends "res://addons/fsmgear/source/FsmState.gd"
 
 func enter(actowner):
 	super(actowner)
+	Musicbox.start_play()
 	actowner.player.awaiting=false
 	actowner.tilemap.material=actowner.stageShadder[actowner.stage]
 	actowner.stage+=1

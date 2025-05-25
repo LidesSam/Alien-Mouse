@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvmn7yyoi8cj6"]
+[gd_scene load_steps=37 format=3 uid="uid://bvmn7yyoi8cj6"]
 
 [ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="1_gnbo2"]
 [ext_resource type="Script" uid="uid://ccy0ilii8w84w" path="res://source/elements/player/mouse.gd" id="2_ug5mo"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dhmwt0bhvie7y" path="res://source/elements/player/mouse-states/idleState.gd" id="8_28exu"]
 [ext_resource type="Script" uid="uid://c3dkjjtgt88lx" path="res://source/elements/player/mouse-states/jumpState.gd" id="9_ptx0n"]
 [ext_resource type="Script" uid="uid://bjgtpcqiswpc7" path="res://source/elements/player/mouse-states/fallState.gd" id="10_gnbo2"]
+[ext_resource type="AudioStream" uid="uid://8j1fkfe787o5" path="res://assets/sfx/stepOn.wav" id="11_a7psb"]
+[ext_resource type="AudioStream" uid="uid://qu60f75ovtcu" path="res://assets/sfx/jump.wav" id="13_ayj4b"]
 [ext_resource type="Script" uid="uid://iptxmysskwgp" path="res://source/elements/player/mouse-states/victoryState.gd" id="13_gnbo2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tf38"]
@@ -224,9 +226,15 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 script = ExtResource("8_28exu")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
+[node name="landingSfx" type="AudioStreamPlayer2D" parent="fsm/idle"]
+stream = ExtResource("11_a7psb")
+
 [node name="jump" type="Node" parent="fsm"]
 script = ExtResource("9_ptx0n")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="jumpSfx" type="AudioStreamPlayer2D" parent="fsm/jump"]
+stream = ExtResource("13_ayj4b")
 
 [node name="fall" type="Node" parent="fsm"]
 script = ExtResource("10_gnbo2")

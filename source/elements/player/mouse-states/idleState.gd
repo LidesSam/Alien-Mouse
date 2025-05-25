@@ -7,6 +7,9 @@ func enter(actowner):
 	actowner.play_animation("idle")
 	actowner.inJump=false
 	actowner.sideCollisionSensor.enabled=false
+	if($landingSfx):
+		$landingSfx.play()
+		$landingSfx.pitch_scale= 1.0 + (randi()%5-2)*0.05
 	super(actowner)
 
 func handleInput(actowner,event):

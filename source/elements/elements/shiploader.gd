@@ -14,6 +14,8 @@ func collect_food(player):
 	food += player.get_food()
 	update_charge()
 	#replace for button action only and player "mouse", contact
+	$loadSfx.pitch_scale=(randi()%4*0.1)+1
+	$loadSfx.play()
 	if(food>=minCharge):
 		loaded=true
 
