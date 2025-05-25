@@ -9,7 +9,7 @@ func enter(actowner):
 	actowner.sideCollisionSensor.enabled=false
 	if($landingSfx):
 		$landingSfx.play()
-		$landingSfx.pitch_scale= 1.0 + (randi()%5-2)*0.05
+		$landingSfx.pitch_scale= 1.0 + (randi()%5-2)*0.2
 	super(actowner)
 
 func handleInput(actowner,event):

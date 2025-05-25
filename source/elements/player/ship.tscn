@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfi8tu52mxhyt"]
+[gd_scene load_steps=21 format=3 uid="uid://dfi8tu52mxhyt"]
 
 [ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="1_osdak"]
 [ext_resource type="Script" uid="uid://cn3dyc4m4jtjp" path="res://source/elements/player/ship.gd" id="1_qg5y5"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://ct5qkh0wai5c5" path="res://addons/fsmgear/source/Fsm.gd" id="6_3kshl"]
 [ext_resource type="Script" uid="uid://dk6fjngxkiftm" path="res://addons/fsmgear/source/FsmState.gd" id="7_u8wy5"]
 [ext_resource type="Script" uid="uid://xd4d5dvkrgjk" path="res://source/elements/player/ship-states/ship-idle.gd" id="8_3kshl"]
+[ext_resource type="Script" uid="uid://buoit254g8r5f" path="res://source/elements/player/ship-states/ship-dmg.gd" id="9_eojiw"]
+[ext_resource type="AudioStream" uid="uid://dacm8we0o2clg" path="res://assets/sfx/Ship_Hit.wav" id="9_u8wy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kshl"]
 atlas = ExtResource("4_qg5y5")
@@ -109,7 +111,7 @@ texture = ExtResource("2_5whrt")
 material = ExtResource("3_k8c1q")
 sprite_frames = SubResource("SpriteFrames_jsy1o")
 animation = &"hurt"
-frame_progress = 0.929088
+frame_progress = 0.154943
 
 [node name="Label" type="Label" parent="."]
 offset_left = -24.0
@@ -130,6 +132,17 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 [node name="idle" type="Node" parent="fsm"]
 script = ExtResource("8_3kshl")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="damage" type="Node" parent="fsm"]
+script = ExtResource("9_eojiw")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="dmgsfx" type="AudioStreamPlayer2D" parent="fsm/damage"]
+stream = ExtResource("9_u8wy5")
+
+[node name="Timer" type="Timer" parent="fsm/damage"]
+wait_time = 2.0
+one_shot = true
 
 [node name="die" type="Node" parent="fsm"]
 script = ExtResource("7_u8wy5")

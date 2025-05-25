@@ -9,6 +9,7 @@ var gridOffset=Vector2(16,16)
 var gridzone =null
 var death=false
 var dying=false
+var damaged=false
 var awaiting = true
 var move = true
 
@@ -20,11 +21,17 @@ var lifebar = null
 
 func _ready() -> void:
 	fsm.autoload(self)
+	
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addGlobalTransition("die",isDying)
-	fsm.startState()
-	fsm.set_debug_on($Label)
 	
+	fsm.addStateTransition("idle","damage", isDamaged)
+	fsm.addStateTransition("damage","idle",$fsm/damage.dmgTimeOver)
+	
+	fsm.set_debug_on($Label)
+	fsm.startState()
+func isDamaged():
+	return damaged
 func _process(delta: float) -> void:
 	fsm.fsmUpdate(delta)
 	
@@ -73,8 +80,6 @@ func set_Grid_Pos():
 func get_Grid_Pos():
 	return gpos
 
-	
-
 func isDying():
 	return dying
 
@@ -90,8 +95,7 @@ func set_lifebar(bar):
 
 func hurt(points:int=1):	
 	lifebar.deplete(points)
-	animation.play("hurt")
+	damaged=true
 	
 func _on_move_timer_timeout() -> void:
 	move = true  # Re-enable movement after timer delay
-	pass # Replace with function body.

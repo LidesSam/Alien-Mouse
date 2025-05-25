@@ -228,6 +228,7 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="landingSfx" type="AudioStreamPlayer2D" parent="fsm/idle"]
 stream = ExtResource("11_a7psb")
+volume_db = -0.4
 
 [node name="jump" type="Node" parent="fsm"]
 script = ExtResource("9_ptx0n")
@@ -235,6 +236,7 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="jumpSfx" type="AudioStreamPlayer2D" parent="fsm/jump"]
 stream = ExtResource("13_ayj4b")
+volume_db = -20.0
 
 [node name="fall" type="Node" parent="fsm"]
 script = ExtResource("10_gnbo2")
