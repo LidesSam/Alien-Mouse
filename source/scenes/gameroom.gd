@@ -16,6 +16,7 @@ extends Node2D
 @onready var endPopup = $gameover
 @onready var lifebar = $poinbar
 
+var stage=0
 
 func _ready():
 	fsm.autoload(self)

@@ -20,7 +20,7 @@ var onDropDown=false
 var inPecking=false
 var justHitWall = false	
 var awaiting = true
-
+var win = false
 
 @onready var fsm = $fsm
 @onready var animation=$AnimatedSprite2D
@@ -41,6 +41,7 @@ func _ready():
 	
 	fsm.addGlobalTransition("die",isDying)
 	fsm.addGlobalTransition("wait",isWaiting)
+	fsm.addGlobalTransition("victory",inVictory)
 	
 	fsm.addStateTransition("wait","idle",isNotAwaiting)
 	fsm.addStateTransition("fall","idle",isOnGround)
@@ -56,6 +57,12 @@ func _ready():
 	
 func wait_over():
 	awaiting=false
+	
+func victory():
+	win=true	
+	
+func inVictory():
+	return  isNotAwaiting() and win
 	
 func isNotAwaiting():
 	return !awaiting

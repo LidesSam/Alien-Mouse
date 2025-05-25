@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvmn7yyoi8cj6"]
+[gd_scene load_steps=35 format=3 uid="uid://bvmn7yyoi8cj6"]
 
 [ext_resource type="Material" uid="uid://cfw22j60uh028" path="res://assets/shaders/crab.tres" id="1_y8l4u"]
 [ext_resource type="Script" uid="uid://ccy0ilii8w84w" path="res://source/elements/player/mouse.gd" id="2_ug5mo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dhmwt0bhvie7y" path="res://source/elements/player/mouse-states/idleState.gd" id="8_28exu"]
 [ext_resource type="Script" uid="uid://c3dkjjtgt88lx" path="res://source/elements/player/mouse-states/jumpState.gd" id="9_ptx0n"]
 [ext_resource type="Script" uid="uid://bjgtpcqiswpc7" path="res://source/elements/player/mouse-states/fallState.gd" id="10_gnbo2"]
+[ext_resource type="Script" uid="uid://iptxmysskwgp" path="res://source/elements/player/mouse-states/victoryState.gd" id="13_gnbo2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tf38"]
 atlas = ExtResource("3_ptx0n")
@@ -230,6 +231,10 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="fall" type="Node" parent="fsm"]
 script = ExtResource("10_gnbo2")
+metadata/_custom_type_script = "uid://dk6fjngxkiftm"
+
+[node name="victory" type="Node" parent="fsm"]
+script = ExtResource("13_gnbo2")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

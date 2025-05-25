@@ -1,6 +1,4 @@
 extends "res://addons/fsmgear/source/FsmState.gd"
 
 func enter(actowner):
-	super(actowner)
-	actowner.player.victory()
-	pass
+	actowner.animation.play("victory")
