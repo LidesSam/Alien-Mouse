@@ -39,3 +39,5 @@ text = "asd"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -6,6 +6,9 @@ extends Node2D
 @onready var tilemap= $TileMap
 @onready var fsm = $fsm
 
+
+@onready var timeleft = $hud/timeleft
+
 @onready var countdown = $hud/backCountdown/countdown
 @onready var countdownback =$hud/backCountdown
 @onready var countdownLbl =$hud/backCountdown/label
@@ -19,6 +22,7 @@ func _ready():
 	fsm.addStateTransition("startStage","platformStage",isCoundownOver)
 	fsm.addStateTransition("platformStage","spaceStage",shiploader.isLoaded)
 	fsm.addStateTransition("spaceStage","platformStage",spacePhase.phase_ended)
+	fsm.addGlobalTransition("lossStage",lifebar.is_empty)
 	fsm.startState()
 
 func isCoundownOver():
@@ -42,4 +46,10 @@ func _on_replay_btn_pressed() -> void:
 
 func _on_poinbar_lpchange() -> void:
 	$hud/lbllp.text=str(lifebar.gp,"/",lifebar.maxGp)
+	pass # Replace with function body.
+
+
+func _on_timeleft_timeout() -> void:
+	lifebar.deplete(1)
+	timeleft.start(5)
 	pass # Replace with function body.
