@@ -6,7 +6,7 @@ var food=0
 
 func next_stage():
 	loaded=false
-	minCharge+=1
+	minCharge+=3
 	food=0
 	update_charge()
 	

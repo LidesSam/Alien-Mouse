@@ -27,8 +27,10 @@ func trigger_marked():
 	for bb in triggered:
 		bb.trigger()
 	triggered=[]
+	$triggerSfx.play()
 	
 func random_atk(stage):
+	$markSfx.play()
 	triggered=[]
 	while triggered.size() < 12*stage:
 		var rx = randi() % gridsize.x
@@ -39,6 +41,7 @@ func random_atk(stage):
 			triggered.append(bb)
 
 func col_or_row_atk(stage):
+	$markSfx.play()
 	if(randi()%2==1):
 		row_atk(stage)
 	else:
