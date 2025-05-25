@@ -175,9 +175,9 @@ animations = [{
 "duration": 6.0,
 "texture": SubResource("AtlasTexture_bwsng")
 }],
-"loop": true,
+"loop": false,
 "name": &"victory",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -207,8 +207,7 @@ script = ExtResource("2_ug5mo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_w6ip8")
-animation = &"jumping"
-frame_progress = 0.453612
+animation = &"victory"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

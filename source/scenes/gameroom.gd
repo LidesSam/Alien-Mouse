@@ -5,7 +5,7 @@ extends Node2D
 @onready var spacePhase = $spacePhase
 @onready var tilemap= $TileMap
 @onready var fsm = $fsm
-
+@onready var hud= $hud
 
 @onready var timeleft = $hud/timeleft
 
@@ -15,6 +15,9 @@ extends Node2D
 
 @onready var endPopup = $gameover
 @onready var lifebar = $poinbar
+
+@onready var victory= false
+
 var foodTemp=load("res://source/elements/items/food-item.tscn")
 var stage=0
 
@@ -31,6 +34,7 @@ func _ready():
 	fsm.addStateTransition("platformStage","spaceStage",shiploader.isLoaded)
 	fsm.addStateTransition("spaceStage","platformStage",spacePhase.phase_ended)
 	fsm.addGlobalTransition("lossStage",lifebar.is_empty)
+	fsm.addGlobalTransition("completeStage",inVictory)
 	fsm.startState()
 	spawnedPoints =  get_spawn_point_tiles()
 	freeSpawnedPoints = spawnedPoints.duplicate()
@@ -65,6 +69,8 @@ func spawn_food():
 func isCoundownOver():
 	return countdown.is_stopped()
 
+func inVictory():
+	return victory
 func _process(delta: float) -> void:
 	fsm.fsmUpdate(delta)
 

@@ -59,6 +59,7 @@ func wait_over():
 	awaiting=false
 	
 func victory():
+	wait_over()
 	win=true	
 	
 func inVictory():

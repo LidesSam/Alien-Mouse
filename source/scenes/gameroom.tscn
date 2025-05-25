@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=23 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://bl1gyuxvygk7n" path="res://source/scenes/gameroomStates/lossStageState.gd" id="10_5nmkf"]
 [ext_resource type="PackedScene" uid="uid://d04x6pnkk63th" path="res://source/elements/timeleft.tscn" id="11_js0ax"]
 [ext_resource type="Script" uid="uid://u116pol1nq5o" path="res://source/scenes/gameroomStates/completeStageState.gd" id="11_wmdd4"]
+[ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="12_dnu37"]
+[ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
 
 [sub_resource type="Shader" id="1"]
@@ -118,34 +120,56 @@ metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
 [node name="gameover" type="TextureRect" parent="."]
 visible = false
-offset_right = 640.0
-offset_bottom = 322.0
+material = ExtResource("12_dnu37")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 88.0
+offset_right = 552.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_a6jo6")
 stretch_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="gameover"]
+material = ExtResource("14_pnxwp")
 layout_mode = 0
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 512.0
-offset_bottom = 248.0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 424.0
+offset_bottom = 176.0
 texture = ExtResource("6_kxd5n")
+
+[node name="Label" type="Label" parent="gameover"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 104.0
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.623529, 0.623529, 0.623529, 1)
+text = "Loss!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="backBtn" type="Button" parent="gameover"]
 layout_mode = 0
-offset_left = 456.0
-offset_top = 72.0
-offset_right = 496.0
-offset_bottom = 112.0
-text = "x"
+offset_left = 368.0
+offset_top = 24.0
+offset_right = 416.0
+offset_bottom = 72.0
+text = "X"
 
 [node name="replayBtn" type="TextureButton" parent="gameover"]
+use_parent_material = true
 layout_mode = 0
-offset_left = 256.0
-offset_top = 160.0
-offset_right = 384.0
-offset_bottom = 224.0
+offset_left = 168.0
+offset_top = 104.0
+offset_right = 296.0
+offset_bottom = 168.0
 texture_normal = ExtResource("7_arjnj")
 texture_pressed = ExtResource("7_arjnj")
 texture_hover = ExtResource("8_rdarv")
