@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bhkw7gdusngwf"]
+
+[ext_resource type="Shader" uid="uid://d3nkhr8imnk70" path="res://assets/shaders/GBGRAYSCALE.gdshader" id="1_7mbsj"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_7mbsj")
+shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
+shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
+shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)
+shader_parameter/outline = Color(0.12549, 0.12549, 0.12549, 1)
+shader_parameter/swapLight = Color(0.922789, 0.789769, 0.997101, 1)
+shader_parameter/swapNormal = Color(0.919921, 0.692651, 0.566154, 1)
+shader_parameter/swapShade = Color(0.976471, 0.254902, 0.243137, 1)
+shader_parameter/swapOutline = Color(0.333571, 0.0655824, 0, 1)

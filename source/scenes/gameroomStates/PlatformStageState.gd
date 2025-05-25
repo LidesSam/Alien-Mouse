@@ -4,6 +4,7 @@ extends "res://addons/fsmgear/source/FsmState.gd"
 func enter(actowner):
 	super(actowner)
 	actowner.player.awaiting=false
+	actowner.tilemap.material=actowner.stageShadder[actowner.stage]
 	actowner.stage+=1
 	if(actowner.stage<=3):
 		actowner.player.show()

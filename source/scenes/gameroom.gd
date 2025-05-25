@@ -20,6 +20,9 @@ var stage=0
 
 var spawnedPoints = []
 var freeSpawnedPoints = []
+var stageShadder=[load("res://assets/shaders/sunsetFunji.tres"),
+				load("res://assets/shaders/peaches_mat.tres"),
+				load("res://assets/shaders/metallic-blue.tres")]
 
 func _ready():
 	fsm.autoload(self)
