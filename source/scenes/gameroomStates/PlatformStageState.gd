@@ -6,6 +6,7 @@ func enter(actowner):
 	Musicbox.start_play()
 	actowner.player.awaiting=false
 	actowner.tilemap.material=actowner.stageShadder[actowner.stage]
+	actowner.bg.material=actowner.stageShadder[actowner.stage]
 	actowner.stage+=1
 	if(actowner.stage<=3):
 		actowner.player.show()

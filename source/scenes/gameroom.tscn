@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene load_steps=24 format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="12_dnu37"]
 [ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
+[ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="21_pnxwp"]
 
 [sub_resource type="Shader" id="Shader_lro37"]
 code = "shader_type canvas_item;
@@ -233,6 +234,14 @@ vertical_alignment = 1
 [node name="lbllp" type="Label" parent="hud"]
 offset_right = 40.0
 offset_bottom = 16.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="hud"]
+
+[node name="bg" type="TextureRect" parent="hud/ParallaxBackground"]
+material = ExtResource("21_pnxwp")
+offset_right = 640.0
+offset_bottom = 320.0
+texture = ExtResource("15_bpmsf")
 
 [connection signal="lpchange" from="poinbar" to="." method="_on_poinbar_lpchange"]
 [connection signal="pressed" from="gameover/backBtn" to="." method="_on_back_btn_pressed"]

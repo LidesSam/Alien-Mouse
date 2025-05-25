@@ -13,6 +13,8 @@ extends Node2D
 @onready var countdownback =$hud/backCountdown
 @onready var countdownLbl =$hud/backCountdown/label
 
+@onready var bg =$hud/ParallaxBackground/bg
+
 @onready var endPopup = $gameover
 @onready var lifebar = $poinbar
 
