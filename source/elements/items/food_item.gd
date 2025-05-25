@@ -2,10 +2,14 @@ extends Area2D
 
 var player=null
 
+func _ready() -> void:
+	$Sprite2D.frame=randi()%3
+
 func _process(delta: float) -> void:
 	pass
 
 func picked():
+	$Sprite2D.frame=3
 	$CollisionShape2D.disabled=true
 	
 func to_ship():
