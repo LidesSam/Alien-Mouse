@@ -110,8 +110,7 @@ texture = ExtResource("2_5whrt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_k8c1q")
 sprite_frames = SubResource("SpriteFrames_jsy1o")
-animation = &"hurt"
-frame_progress = 0.154943
+animation = &"down"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -24.0

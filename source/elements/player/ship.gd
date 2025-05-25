@@ -50,10 +50,10 @@ func move_input():
 			animation.play("left")
 		elif Input.is_action_just_pressed("ui_up"):
 			move_to_cell(gpos + Vector2.UP)
-			animation.play("down")
+			animation.play("up")
 		elif Input.is_action_just_pressed("ui_down"):
 			move_to_cell(gpos + Vector2.DOWN)
-			animation.play("up")
+			animation.play("down")
 
 func move_to_cell(target_cell: Vector2):
 	
