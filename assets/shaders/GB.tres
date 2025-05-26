@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bik7qppxjgic2"]
 
-[sub_resource type="Shader" id="1"]
+[sub_resource type="Shader" id="Shader_sdn5t"]
 code = "shader_type canvas_item;
 uniform vec4 light : source_color;
 uniform vec4 normal : source_color;
@@ -41,7 +41,7 @@ void fragment(){
 
 [resource]
 resource_local_to_scene = true
-shader = SubResource("1")
+shader = SubResource("Shader_sdn5t")
 shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
 shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
 shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)
