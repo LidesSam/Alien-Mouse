@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b8gl8i8gqem0j"]
+[gd_resource type="TileSet" format=3 uid="uid://b8gl8i8gqem0j"]
 
 [ext_resource type="Texture2D" uid="uid://wgoivnuhvea5" path="res://assets/sprites/world/tileset.png" id="1_8chaf"]
 [ext_resource type="PackedScene" uid="uid://cf7wiy8j38x0s" path="res://source/elements/elements/spawn_point.tscn" id="3_fx45l"]

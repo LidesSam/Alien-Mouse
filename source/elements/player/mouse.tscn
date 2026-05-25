@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvmn7yyoi8cj6"]
+[gd_scene format=3 uid="uid://bvmn7yyoi8cj6"]
 
 [ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="1_gnbo2"]
 [ext_resource type="Script" uid="uid://ccy0ilii8w84w" path="res://source/elements/player/mouse.gd" id="2_ug5mo"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dacm8we0o2clg" path="res://assets/sfx/Ship_Hit.wav" id="12_q3dqu"]
 [ext_resource type="AudioStream" uid="uid://qu60f75ovtcu" path="res://assets/sfx/jump.wav" id="13_ayj4b"]
 [ext_resource type="Script" uid="uid://iptxmysskwgp" path="res://source/elements/player/mouse-states/victoryState.gd" id="13_gnbo2"]
+[ext_resource type="AudioStream" uid="uid://ccceaxhis2vvg" path="res://assets/sfx/power-up.wav" id="19_2psdk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqxjc"]
 atlas = ExtResource("3_tjm30")
@@ -250,94 +251,98 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3cce"]
 size = Vector2(10, 16)
 
-[node name="mouse" type="CharacterBody2D" groups=["player"]]
+[node name="mouse" type="CharacterBody2D" unique_id=1505530776 groups=["player"]]
 material = ExtResource("1_gnbo2")
 script = ExtResource("2_ug5mo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1537831585]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_w6ip8")
 animation = &"dmg"
 frame_progress = 0.0768749
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999421348]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_r3cce")
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=1858568722]
 script = ExtResource("6_q5fv5")
 
-[node name="wait" type="Node" parent="fsm"]
+[node name="wait" type="Node" parent="fsm" unique_id=2042480468]
 script = ExtResource("7_c7y45")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="dmg" type="Node" parent="fsm"]
+[node name="dmg" type="Node" parent="fsm" unique_id=1053175522]
 script = ExtResource("11_q3dqu")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="dmgsfx" type="AudioStreamPlayer2D" parent="fsm/dmg"]
+[node name="dmgsfx" type="AudioStreamPlayer2D" parent="fsm/dmg" unique_id=889602380]
 stream = ExtResource("12_q3dqu")
 volume_db = 5.0
 pitch_scale = 3.0
 attenuation = 5.27801
 
-[node name="idle" type="Node" parent="fsm"]
+[node name="idle" type="Node" parent="fsm" unique_id=2095416410]
 script = ExtResource("8_28exu")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="landingSfx" type="AudioStreamPlayer2D" parent="fsm/idle"]
+[node name="landingSfx" type="AudioStreamPlayer2D" parent="fsm/idle" unique_id=277752457]
 stream = ExtResource("11_a7psb")
 volume_db = -0.4
 
-[node name="jump" type="Node" parent="fsm"]
+[node name="jump" type="Node" parent="fsm" unique_id=793344317]
 script = ExtResource("9_ptx0n")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="jumpSfx" type="AudioStreamPlayer2D" parent="fsm/jump"]
+[node name="jumpSfx" type="AudioStreamPlayer2D" parent="fsm/jump" unique_id=1101752124]
 stream = ExtResource("13_ayj4b")
 volume_db = -20.0
 
-[node name="fall" type="Node" parent="fsm"]
+[node name="fall" type="Node" parent="fsm" unique_id=552025683]
 script = ExtResource("10_gnbo2")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="victory" type="Node" parent="fsm"]
+[node name="victory" type="Node" parent="fsm" unique_id=629273832]
 script = ExtResource("13_gnbo2")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=9980749]
 position = Vector2(0, 16)
 target_position = Vector2(0, 4)
 
-[node name="lblanim" type="Label" parent="."]
+[node name="lblanim" type="Label" parent="." unique_id=1893917852]
 visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = -4.0
 
-[node name="lblstate" type="Label" parent="."]
+[node name="lblstate" type="Label" parent="." unique_id=316190979]
 visible = false
 offset_left = -20.0
 offset_top = -33.0
 offset_right = 20.0
 offset_bottom = -17.0
 
-[node name="RayCastSide" type="RayCast2D" parent="."]
+[node name="RayCastSide" type="RayCast2D" parent="." unique_id=1766770729]
 position = Vector2(0, 8)
 enabled = false
 target_position = Vector2(16, 0)
 
-[node name="lblFood" type="Label" parent="."]
+[node name="lblFood" type="Label" parent="." unique_id=1020986082]
 visible = false
 offset_left = 7.0
 offset_top = -6.0
 offset_right = 22.0
 offset_bottom = 10.0
 
-[node name="foodTrailStep" type="Timer" parent="."]
+[node name="foodTrailStep" type="Timer" parent="." unique_id=1445099345]
 wait_time = 0.1
 autostart = true
+
+[node name="foodTrailFullSFx" type="AudioStreamPlayer" parent="." unique_id=804418925]
+stream = ExtResource("19_2psdk")
+pitch_scale = 3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="foodTrailStep" to="." method="_on_food_trail_step_timeout"]

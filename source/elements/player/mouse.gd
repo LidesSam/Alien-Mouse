@@ -28,6 +28,7 @@ var win = false
 @onready var dmgCooldown = $Timer
 @onready var wasDamaged = false
 
+#host pick items
 var foodTrail:Array=[]
 
 func _ready():
@@ -127,6 +128,11 @@ func _physics_process(delta):
 	fsm.fsmUpdate(delta)	
 	$lblFood.text=str(foodTrail.size())
 
+func add_to_food_trail(item):
+	foodTrail.push_back(item)
+	if(foodTrail.size()>=Global.shiploader.minCharge):
+		$foodTrailFullSFx.play()
+
 func gravity_step():
 	velocity.y-=-9.8
 	if(velocity.y>=200):
@@ -175,6 +181,7 @@ func sidemove():
 		velocity.x=0
 	else:
 		velocity.x=speed*d
+		
 	
 func push_trail_position(position):
 	var pos = position
@@ -182,8 +189,8 @@ func push_trail_position(position):
 	for t in foodTrail:
 		if lastpos != null:
 			pos = lastpos
-		lastpos = t.position
-		t.position = pos
+		#set the position, add a small deviation, and return previous position unaltered
+		lastpos = t.set_trail_position(pos)
 		
 func set_tilemap(tmap:TileMapLayer):
 	print("setting tilemap:",tmap.name)
@@ -213,8 +220,8 @@ func get_wasDamaged():
 
 
 func _on_food_trail_step_timeout() -> void:
-	if(velocity!=Vector2.ZERO):
-		push_trail_position(position)
+	#if(velocity!=Vector2.ZERO):
+	push_trail_position(position)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

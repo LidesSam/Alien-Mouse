@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwweia0ir1jok"]
+[gd_scene format=3 uid="uid://dwweia0ir1jok"]
 
 [ext_resource type="Material" uid="uid://bik7qppxjgic2" path="res://assets/shaders/GB.tres" id="1_gsaqs"]
 [ext_resource type="Script" uid="uid://dbcahqcn8scj5" path="res://source/scenes/main_menu.gd" id="2_g3dnu"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://brdycnc2rhp05" path="res://assets/sprites/system/play-button/play-btn-pressed.png" id="5_5nkv3"]
 [ext_resource type="Texture2D" uid="uid://4vyx1np08xfo" path="res://assets/sprites/system/alien-mouse-tittle-mini.png" id="8_4yvbl"]
 
-[node name="mainMenu" type="Control"]
+[node name="mainMenu" type="Control" unique_id=938029861]
 material = ExtResource("1_gsaqs")
 use_parent_material = true
 layout_mode = 3
@@ -21,7 +21,7 @@ grow_vertical = 2
 script = ExtResource("2_g3dnu")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=631706328]
 use_parent_material = true
 layout_mode = 0
 offset_left = -64.0
@@ -31,11 +31,11 @@ offset_bottom = 512.0
 texture = ExtResource("2_wf2tm")
 stretch_mode = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=962869741]
 use_parent_material = true
 anchor_mode = 0
 
-[node name="playBtn" type="TextureButton" parent="."]
+[node name="playBtn" type="TextureButton" parent="." unique_id=1028147559]
 material = ExtResource("4_5nkv3")
 layout_mode = 1
 anchors_preset = 8
@@ -53,7 +53,7 @@ texture_normal = ExtResource("3_g3dnu")
 texture_pressed = ExtResource("4_jx8sb")
 texture_hover = ExtResource("5_5nkv3")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1306777697]
 material = ExtResource("4_5nkv3")
 layout_mode = 0
 offset_right = 640.0

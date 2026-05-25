@@ -25,7 +25,7 @@
 [ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="21_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://cd134xo2kgiac" path="res://assets/sprites/world/star-tileset.png" id="24_sidcv"]
 
-[sub_resource type="Shader" id="1"]
+[sub_resource type="Shader" id="Shader_27t6a"]
 code = "shader_type canvas_item;
 uniform vec4 light : source_color;
 uniform vec4 normal : source_color;
@@ -66,7 +66,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8n7p"]
 resource_local_to_scene = true
-shader = SubResource("1")
+shader = SubResource("Shader_27t6a")
 shader_parameter/light = Color(0.921569, 0.827451, 1, 1)
 shader_parameter/normal = Color(0.623529, 0.623529, 0.623529, 1)
 shader_parameter/shade = Color(0.376471, 0.376471, 0.376471, 1)

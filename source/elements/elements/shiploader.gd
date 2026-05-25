@@ -4,6 +4,9 @@ var loaded=false
 var minCharge=3
 var food=0
 
+func _ready() -> void:
+	Global.shiploader=self
+
 func next_stage(stage):
 	loaded=false
 	minCharge=3*stage
