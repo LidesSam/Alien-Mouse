@@ -130,7 +130,7 @@ func _physics_process(delta):
 
 func add_to_food_trail(item):
 	foodTrail.push_back(item)
-	if(foodTrail.size()>=Global.shiploader.minCharge):
+	if(foodTrail.size()+Global.shiploader.food>=Global.shiploader.minCharge):
 		$foodTrailFullSFx.play()
 
 func gravity_step():
