@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dbyilsb02ydgl" path="res://assets/sfx/victory.wav" id="13_m8n7p"]
 [ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
-[ext_resource type="Material" uid="uid://dokqq7kuxo23v" path="res://assets/shaders/metallic-blue.tres" id="21_is35p"]
+[ext_resource type="Material" uid="uid://0su3nxsykvjn" path="res://assets/shaders/Gamma-night.tres" id="21_is35p"]
 [ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="21_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://cd134xo2kgiac" path="res://assets/sprites/world/star-tileset.png" id="24_sidcv"]
 
@@ -65,7 +65,7 @@ void fragment(){
 
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sidcv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ccgc"]
 resource_local_to_scene = true
 shader = SubResource("Shader_27t6a")
 shader_parameter/light = Color(0.921569, 0.827451, 1, 1)
@@ -116,7 +116,7 @@ void fragment(){
 
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_is35p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvlr5"]
 resource_local_to_scene = true
 shader = SubResource("Shader_lro37")
 shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
@@ -143,13 +143,13 @@ anchor_mode = 0
 [node name="extraElements" type="Node2D" parent="." unique_id=2084123718]
 
 [node name="shiploader" parent="extraElements" unique_id=196385061 instance=ExtResource("3_js0ax")]
-material = SubResource("ShaderMaterial_sidcv")
+material = SubResource("ShaderMaterial_1ccgc")
 position = Vector2(320, 208)
 
 [node name="food" type="Node2D" parent="extraElements" unique_id=1051117208]
 
 [node name="mouse" parent="extraElements" unique_id=1740229199 instance=ExtResource("2_05xs6")]
-material = SubResource("ShaderMaterial_is35p")
+material = SubResource("ShaderMaterial_vvlr5")
 position = Vector2(321, 206)
 
 [node name="fsm" type="Node" parent="." unique_id=677095281]
@@ -258,7 +258,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="spacePhase" parent="." unique_id=1192121497 instance=ExtResource("9_arjnj")]
-visible = false
 material = ExtResource("21_is35p")
 position = Vector2(176, 16)
 
