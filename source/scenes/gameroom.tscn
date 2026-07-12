@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dh321rfusbgev"]
+[gd_scene format=4 uid="uid://dh321rfusbgev"]
 
 [ext_resource type="Script" uid="uid://d0cu70j7avgqp" path="res://source/scenes/gameroom.gd" id="1_7kejr"]
 [ext_resource type="TileSet" uid="uid://b8gl8i8gqem0j" path="res://assets/sprites/world/tileset.tres" id="1_vq24a"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dbyilsb02ydgl" path="res://assets/sfx/victory.wav" id="13_m8n7p"]
 [ext_resource type="Material" uid="uid://6i3c70h4v8wd" path="res://assets/shaders/sunsetFunji.tres" id="14_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://moxx5a57rhhj" path="res://assets/sprites/system/background-tile-square.png" id="15_bpmsf"]
+[ext_resource type="Material" uid="uid://dokqq7kuxo23v" path="res://assets/shaders/metallic-blue.tres" id="21_is35p"]
 [ext_resource type="Material" uid="uid://53t608ngttgd" path="res://assets/shaders/gum-cassata.tres" id="21_pnxwp"]
 [ext_resource type="Texture2D" uid="uid://cd134xo2kgiac" path="res://assets/sprites/world/star-tileset.png" id="24_sidcv"]
 
@@ -64,7 +65,7 @@ void fragment(){
 
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8n7p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sidcv"]
 resource_local_to_scene = true
 shader = SubResource("Shader_27t6a")
 shader_parameter/light = Color(0.921569, 0.827451, 1, 1)
@@ -115,7 +116,7 @@ void fragment(){
 
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nmkf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_is35p"]
 resource_local_to_scene = true
 shader = SubResource("Shader_lro37")
 shader_parameter/light = Color(0.87451, 0.87451, 0.87451, 1)
@@ -127,60 +128,60 @@ shader_parameter/swapNormal = Color(0.388235, 0.603922, 0.0745098, 1)
 shader_parameter/swapShade = Color(0.160784, 0.333333, 0.00392157, 1)
 shader_parameter/swapOutline = Color(0.0588235, 0.219608, 0.0588235, 1)
 
-[node name="gameroom" type="Node2D"]
+[node name="gameroom" type="Node2D" unique_id=1878984929]
 script = ExtResource("1_7kejr")
 
-[node name="poinbar" parent="." instance=ExtResource("2_wmdd4")]
+[node name="poinbar" parent="." unique_id=601253549 instance=ExtResource("2_wmdd4")]
 
-[node name="TileMap" type="TileMapLayer" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="." unique_id=404707187]
 tile_map_data = PackedByteArray("AAAAAAkAAAACAAEAAAAAAAgAAAACAAEAAAAAAAcAAAACAAEAAAAAAAYAAAACAAEAAAAAAAUAAAACAAEAAAAAAAQAAAACAAEAAAAAAAMAAAACAAEAAAAAAAIAAAACAAEAAAAAAAEAAAACAAEAAAAAAAAAAAACAAEAAAABAAgAAAAAAAAAAAACAAgAAAABAAAAAAADAAgAAAACAAAAAAAQAAgAAAAAAAAAAAARAAgAAAABAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAABAAAAAAABAAkAAAAAAAEAAAACAAkAAAABAAEAAAADAAkAAAACAAEAAAABAAAAAAAAAAIAAAACAAAAAAABAAIAAAADAAAAAAABAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAABAAIAAAAKAAAAAAABAAIAAAALAAAAAAABAAIAAAAMAAAAAAABAAIAAAANAAAAAAABAAIAAAAOAAAAAAABAAIAAAAPAAAAAAABAAIAAAAQAAAAAAABAAIAAAARAAAAAAABAAIAAAABAAoAAAAAAAEAAAACAAoAAAABAAEAAAADAAoAAAACAAEAAAARAAkAAAABAAEAAAARAAoAAAABAAEAAAAQAAkAAAAAAAEAAAAMAAcAAAACAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAABAAAAAAAGAAkAAAACAAAAAAAHAAkAAAAAAAEAAAAJAAkAAAABAAEAAAAKAAkAAAABAAEAAAALAAkAAAABAAEAAAAMAAkAAAACAAEAAAANAAkAAAAAAAAAAAAOAAkAAAABAAAAAAAPAAkAAAACAAAAAAAEAAoAAAAAAAEAAAAFAAoAAAABAAEAAAAGAAoAAAACAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAABAAEAAAAJAAoAAAABAAEAAAAKAAoAAAABAAEAAAALAAoAAAABAAEAAAAMAAoAAAACAAEAAAANAAoAAAAAAAEAAAAOAAoAAAABAAEAAAAPAAoAAAACAAEAAAAEAAsAAAAAAAIAAAAFAAsAAAABAAIAAAAGAAsAAAACAAIAAAAHAAgAAAAAAAEAAAAIAAgAAAABAAEAAAAJAAgAAAABAAEAAAANAAsAAAAAAAIAAAAOAAsAAAABAAIAAAAPAAsAAAACAAIAAAAIAAkAAAABAAEAAAAKAAgAAAABAAEAAAAHAAsAAAAAAAIAAAAIAAsAAAABAAIAAAAJAAsAAAABAAIAAAAKAAsAAAABAAIAAAALAAsAAAABAAIAAAAMAAsAAAACAAIAAAALAAgAAAABAAEAAAAMAAgAAAACAAEAAAAAAAoAAAACAAEAAAAAAAsAAAACAAIAAAABAAsAAAAAAAIAAAACAAsAAAABAAIAAAADAAsAAAACAAIAAAAQAAoAAAAAAAEAAAAQAAsAAAAAAAIAAAARAAsAAAABAAIAAAATAAEAAAAAAAEAAAATAAIAAAAAAAEAAAATAAMAAAAAAAEAAAATAAQAAAAAAAEAAAATAAUAAAAAAAEAAAASAAAAAAACAAIAAAASAAgAAAACAAAAAAASAAkAAAACAAEAAAASAAoAAAACAAEAAAASAAsAAAACAAIAAAATAAAAAAAAAAEAAAATAAgAAAAAAAEAAAATAAkAAAAAAAEAAAATAAoAAAAAAAEAAAATAAsAAAAAAAIAAAATAAcAAAAAAAEAAAATAAYAAAAAAAEAAAAUAAsAAAABAAIAAAAUAAoAAAABAAEAAAAUAAkAAAABAAEAAAAUAAgAAAABAAEAAAAUAAcAAAABAAEAAAAUAAYAAAABAAEAAAAUAAUAAAABAAEAAAAUAAQAAAABAAEAAAAUAAMAAAABAAEAAAAUAAIAAAABAAEAAAAUAAEAAAABAAEAAAAUAAAAAAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD//wcAAAABAAEAAAD//wgAAAABAAEAAAD//wkAAAABAAEAAAD//woAAAABAAEAAAD//wsAAAABAAIAAAAAAAwAAAABAAAAAAAAAA0AAAABAAEAAAAAAA4AAAABAAIAAAABAAwAAAABAAAAAAABAA0AAAABAAEAAAABAA4AAAABAAIAAAACAAwAAAABAAAAAAACAA0AAAABAAEAAAACAA4AAAABAAIAAAADAAwAAAABAAAAAAADAA0AAAABAAEAAAADAA4AAAABAAIAAAAEAAwAAAABAAAAAAAEAA0AAAABAAEAAAAEAA4AAAABAAIAAAAFAAwAAAABAAAAAAAFAA0AAAABAAEAAAAFAA4AAAABAAIAAAAGAAwAAAABAAAAAAAGAA0AAAABAAEAAAAGAA4AAAABAAIAAAAHAAwAAAABAAAAAAAHAA0AAAABAAEAAAAHAA4AAAABAAIAAAAIAAwAAAABAAAAAAAIAA0AAAABAAEAAAAIAA4AAAABAAIAAAAJAAwAAAABAAAAAAAJAA0AAAABAAEAAAAJAA4AAAABAAIAAAAKAAwAAAABAAAAAAAKAA0AAAABAAEAAAAKAA4AAAABAAIAAAALAAwAAAABAAAAAAALAA0AAAABAAEAAAALAA4AAAABAAIAAAAMAAwAAAABAAAAAAAMAA0AAAABAAEAAAAMAA4AAAABAAIAAAANAAwAAAABAAAAAAANAA0AAAABAAEAAAANAA4AAAABAAIAAAAOAAwAAAABAAAAAAAOAA0AAAABAAEAAAAOAA4AAAABAAIAAAAPAAwAAAABAAAAAAAPAA0AAAABAAEAAAAPAA4AAAABAAIAAAAQAAwAAAABAAAAAAAQAA0AAAABAAEAAAAQAA4AAAABAAIAAAARAAwAAAABAAAAAAARAA0AAAABAAEAAAARAA4AAAABAAIAAAASAAwAAAABAAAAAAASAA0AAAABAAEAAAASAA4AAAABAAIAAAATAAwAAAABAAAAAAATAA0AAAABAAEAAAATAA4AAAABAAIAAAAUAAwAAAABAAAAAAAUAA0AAAABAAEAAAAUAA4AAAABAAIAAAD//wwAAAABAAAAAAD//w0AAAABAAEAAAD//w4AAAABAAIAAAD+/woAAAAAAAEAAAD+/wsAAAAAAAIAAAAVAAoAAAACAAEAAAAVAAsAAAACAAIAAAAUAP3/AAABAAAAAAAVAP3/AAACAAAAAAATAP7/AAAAAAEAAAAUAP7/AAABAAEAAAAVAP7/AAACAAEAAAATAP//AAAAAAEAAAAUAP//AAABAAEAAAAVAP//AAACAAEAAAAVAAAAAAACAAEAAAAVAAEAAAACAAEAAAAVAAIAAAACAAEAAAAVAAMAAAACAAEAAAAVAAQAAAACAAEAAAAVAAUAAAACAAEAAAAVAAYAAAACAAEAAAAVAAcAAAACAAEAAAAVAAgAAAACAAEAAAAVAAkAAAACAAEAAAD+/wkAAAAAAAEAAAD+/wgAAAAAAAEAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAEAAAD+/wUAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wMAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wAAAAAAAAEAAAD+////AAAAAAEAAAD/////AAABAAEAAAAAAP//AAACAAEAAAABAP7/AAAAAAAAAAABAP//AAAAAAEAAAACAP7/AAABAAAAAAACAP//AAABAAEAAAADAP7/AAABAAAAAAADAP//AAABAAEAAAAQAP7/AAABAAAAAAAQAP//AAABAAEAAAASAP7/AAACAAAAAAASAP//AAACAAEAAAARAP7/AAABAAAAAAARAP//AAABAAEAAAAPAP7/AAABAAAAAAAPAP//AAABAAEAAAAOAP7/AAABAAAAAAAOAP//AAABAAEAAAANAP7/AAABAAAAAAANAP//AAABAAEAAAAMAP7/AAABAAAAAAAMAP//AAABAAEAAAALAP7/AAABAAAAAAALAP//AAABAAEAAAAKAP7/AAABAAAAAAAKAP//AAABAAEAAAAJAP7/AAABAAAAAAAJAP//AAABAAEAAAAIAP7/AAABAAAAAAAIAP//AAABAAEAAAAHAP7/AAABAAAAAAAHAP//AAABAAEAAAAGAP7/AAABAAAAAAAGAP//AAABAAEAAAAFAP7/AAABAAAAAAAFAP//AAABAAEAAAAEAP7/AAABAAAAAAAEAP//AAABAAEAAAATAP3/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAEAAAD///3/AAABAAAAAAD///7/AAABAAEAAAAAAP3/AAACAAAAAAAAAP7/AAACAAEAAAAEAAUAAgABAAEAAAAFAAUAAgACAAEAAAAPAAUAAgABAAEAAAAQAAUAAgABAAEAAAARAAUAAgACAAEAAAADAAUAAgABAAEAAAALAAcAAAABAAAAAAABAAIAAgABAAEAAAACAAIAAgABAAEAAAARAAIAAgABAAEAAAASAAIAAgABAAEAAAAIAAQAAgAAAAAAAAAKAAQAAgABAAAAAAALAAQAAgACAAAAAAAJAAQAAgABAAAAAAADAAIAAgABAAEAAAAEAAIAAgABAAEAAAAFAAIAAgACAAEAAAAQAAIAAgABAAEAAAAOAAIAAgAAAAEAAAAPAAIAAgABAAEAAAAEAAcAAgACAAEAAAAQAAcAAgACAAEAAAAPAAcAAgAAAAEAAAADAAcAAgAAAAEAAAAMAAYABAAAAAAAAQAHAAYABAAAAAAAAQAQAAQABAAAAAAAAQAQAAMABAAAAAAAAQAPAAMABAAAAAAAAQAPAAQABAAAAAAAAQARAAQABAAAAAAAAQARAAMABAAAAAAAAQAJAAIABAAAAAAAAQAKAAIABAAAAAAAAQAKAAMABAAAAAAAAQAJAAMABAAAAAAAAQAIAAMABAAAAAAAAQAIAAIABAAAAAAAAQALAAIABAAAAAAAAQALAAMABAAAAAAAAQABAAEABAAAAAAAAQACAAEABAAAAAAAAQADAAEABAAAAAAAAQAQAAEABAAAAAAAAQARAAEABAAAAAAAAQASAAEABAAAAAAAAQAQAAYABAAAAAAAAQASAAcABAAAAAAAAQANAAgABAAAAAAAAQAGAAgABAAAAAAAAQABAAcABAAAAAAAAQADAAYABAAAAAAAAQACAAMABAAAAAAAAQACAAQABAAAAAAAAQADAAQABAAAAAAAAQAEAAQABAAAAAAAAQAEAAMABAAAAAAAAQADAAMABAAAAAAAAQACAAUAAgAAAAEAAAAOAAUAAgAAAAEAAAA=")
 tile_set = ExtResource("1_vq24a")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1215315160]
 anchor_mode = 0
 
-[node name="extraElements" type="Node2D" parent="."]
+[node name="extraElements" type="Node2D" parent="." unique_id=2084123718]
 
-[node name="shiploader" parent="extraElements" instance=ExtResource("3_js0ax")]
-material = SubResource("ShaderMaterial_m8n7p")
+[node name="shiploader" parent="extraElements" unique_id=196385061 instance=ExtResource("3_js0ax")]
+material = SubResource("ShaderMaterial_sidcv")
 position = Vector2(320, 208)
 
-[node name="food" type="Node2D" parent="extraElements"]
+[node name="food" type="Node2D" parent="extraElements" unique_id=1051117208]
 
-[node name="mouse" parent="extraElements" instance=ExtResource("2_05xs6")]
-material = SubResource("ShaderMaterial_5nmkf")
+[node name="mouse" parent="extraElements" unique_id=1740229199 instance=ExtResource("2_05xs6")]
+material = SubResource("ShaderMaterial_is35p")
 position = Vector2(321, 206)
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=677095281]
 script = ExtResource("4_duyfd")
 
-[node name="startStage" type="Node" parent="fsm"]
+[node name="startStage" type="Node" parent="fsm" unique_id=951849959]
 script = ExtResource("7_gv763")
 metadata/_custom_type_script = "uid://cvh3cy8mhw4ie"
 
-[node name="platformStage" type="Node" parent="fsm"]
+[node name="platformStage" type="Node" parent="fsm" unique_id=459708493]
 script = ExtResource("8_yn5ug")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="spaceStage" type="Node" parent="fsm"]
+[node name="spaceStage" type="Node" parent="fsm" unique_id=2146978150]
 script = ExtResource("9_5nmkf")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="lossStage" type="Node" parent="fsm"]
+[node name="lossStage" type="Node" parent="fsm" unique_id=846553640]
 script = ExtResource("10_5nmkf")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="lossSfx" type="AudioStreamPlayer2D" parent="fsm/lossStage"]
+[node name="lossSfx" type="AudioStreamPlayer2D" parent="fsm/lossStage" unique_id=1126302496]
 stream = ExtResource("11_m8n7p")
 
-[node name="completeStage" type="Node" parent="fsm"]
+[node name="completeStage" type="Node" parent="fsm" unique_id=1675884896]
 script = ExtResource("11_wmdd4")
 metadata/_custom_type_script = "uid://dk6fjngxkiftm"
 
-[node name="vitoryJingleSfx" type="AudioStreamPlayer2D" parent="fsm/completeStage"]
+[node name="vitoryJingleSfx" type="AudioStreamPlayer2D" parent="fsm/completeStage" unique_id=1038677039]
 stream = ExtResource("13_m8n7p")
 
-[node name="gameover" type="TextureRect" parent="."]
+[node name="gameover" type="TextureRect" parent="." unique_id=1004745851]
 visible = false
 material = ExtResource("12_dnu37")
 anchors_preset = 8
@@ -196,7 +197,7 @@ grow_vertical = 2
 texture = ExtResource("5_a6jo6")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="gameover"]
+[node name="TextureRect" type="TextureRect" parent="gameover" unique_id=1479123192]
 material = ExtResource("14_pnxwp")
 layout_mode = 0
 offset_left = 40.0
@@ -205,7 +206,7 @@ offset_right = 424.0
 offset_bottom = 176.0
 texture = ExtResource("6_kxd5n")
 
-[node name="Label" type="Label" parent="gameover"]
+[node name="Label" type="Label" parent="gameover" unique_id=1252783916]
 use_parent_material = true
 layout_mode = 0
 offset_left = 104.0
@@ -217,7 +218,7 @@ text = "Loss!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="backBtn" type="Button" parent="gameover"]
+[node name="backBtn" type="Button" parent="gameover" unique_id=895910267]
 layout_mode = 0
 offset_left = 368.0
 offset_top = 24.0
@@ -225,7 +226,7 @@ offset_right = 416.0
 offset_bottom = 72.0
 text = "X"
 
-[node name="replayBtn" type="TextureButton" parent="gameover"]
+[node name="replayBtn" type="TextureButton" parent="gameover" unique_id=536804632]
 use_parent_material = true
 layout_mode = 0
 offset_left = 168.0
@@ -236,7 +237,7 @@ texture_normal = ExtResource("7_arjnj")
 texture_pressed = ExtResource("7_arjnj")
 texture_hover = ExtResource("8_rdarv")
 
-[node name="pause" type="TextureRect" parent="."]
+[node name="pause" type="TextureRect" parent="." unique_id=1813474443]
 visible = false
 offset_left = 192.0
 offset_top = 64.0
@@ -245,7 +246,7 @@ offset_bottom = 192.0
 texture = ExtResource("6_kxd5n")
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="pause"]
+[node name="Label" type="Label" parent="pause" unique_id=17488934]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 32.0
@@ -256,13 +257,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="spacePhase" parent="." instance=ExtResource("9_arjnj")]
+[node name="spacePhase" parent="." unique_id=1192121497 instance=ExtResource("9_arjnj")]
 visible = false
+material = ExtResource("21_is35p")
 position = Vector2(176, 16)
 
-[node name="hud" type="CanvasLayer" parent="."]
+[node name="hud" type="CanvasLayer" parent="." unique_id=1698069304]
 
-[node name="backCountdown" type="TextureRect" parent="hud"]
+[node name="backCountdown" type="TextureRect" parent="hud" unique_id=1862745416]
 visible = false
 offset_left = 256.0
 offset_top = 64.0
@@ -270,11 +272,11 @@ offset_right = 384.0
 offset_bottom = 192.0
 texture = ExtResource("15_bpmsf")
 
-[node name="countdown" type="Timer" parent="hud/backCountdown"]
+[node name="countdown" type="Timer" parent="hud/backCountdown" unique_id=1534061525]
 wait_time = 3.0
 one_shot = true
 
-[node name="label" type="Label" parent="hud/backCountdown"]
+[node name="label" type="Label" parent="hud/backCountdown" unique_id=1267332168]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,7 +288,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="hud"]
+[node name="TextureRect2" type="TextureRect" parent="hud" unique_id=839729131]
 material = ExtResource("21_pnxwp")
 offset_left = 8.0
 offset_top = 8.0
@@ -296,21 +298,21 @@ texture = ExtResource("24_sidcv")
 expand_mode = 2
 stretch_mode = 1
 
-[node name="timeleft" parent="hud" instance=ExtResource("11_js0ax")]
+[node name="timeleft" parent="hud" unique_id=2048677454 instance=ExtResource("11_js0ax")]
 offset_left = 512.0
 offset_top = 0.0
 offset_right = 600.0
 offset_bottom = 32.0
 
-[node name="lbllp" type="Label" parent="hud"]
+[node name="lbllp" type="Label" parent="hud" unique_id=109752287]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 64.0
 offset_bottom = 32.0
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="hud"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="hud" unique_id=360471945]
 
-[node name="bg" type="TextureRect" parent="hud/ParallaxBackground"]
+[node name="bg" type="TextureRect" parent="hud/ParallaxBackground" unique_id=1936336219]
 offset_right = 640.0
 offset_bottom = 320.0
 texture = ExtResource("15_bpmsf")

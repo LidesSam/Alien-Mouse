@@ -26,13 +26,15 @@ func _process(delta: float) -> void:
 	fsm.fsmUpdate(delta)
 
 func start_phase():
+	gridzone.hide()
+	$AnimationPlayer.play("OpenSpace")
 	start=true
 	
 func end_phase():
 	start=false
 	
 func phase_started():
-	return start==true
+	return start==true and !$AnimationPlayer.is_playing()
 	
 func phase_ended():
 	return start==false

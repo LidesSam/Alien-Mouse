@@ -1,13 +1,12 @@
 extends "res://addons/fsmgear/source/FsmState.gd"
 
-func enter(actonwer):
-	super(actonwer)
-	actonwer.player.awaiting=true
-	actonwer.player.hide()
-	actonwer.spacePhase.show()
-	
-	actonwer.spacePhase.stage = actonwer.stage
-	actonwer.spacePhase.start_phase()
+func enter(actowner):
+	super(actowner)
+	actowner.player.awaiting=true
+	actowner.player.hide()
+	actowner.spacePhase.show()
+	actowner.spacePhase.stage = actowner.stage
+	actowner.spacePhase.start_phase()
 	
 func exit(actowner):
 	actowner.spacePhase.hide()
