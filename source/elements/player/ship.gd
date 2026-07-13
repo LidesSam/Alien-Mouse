@@ -56,13 +56,12 @@ func move_input():
 			animation.play("down")
 
 func move_to_cell(target_cell: Vector2):
-	
-	print("ship:gpos:",gpos)
-	gpos = target_cell
-	print("ship:gpos:",gpos)
-	set_Grid_Pos()
-
-func set_Grid_Pos():
+	set_grid_pos(target_cell)
+func move_to_center_cell():
+	set_grid_pos(Vector2(4,4))
+		
+func set_grid_pos(pos):
+	gpos=pos
 	# Clamp grid position within bounds
 	gpos.x = clamp(gpos.x, 0, gridzone.gridsize.x - 1)
 	gpos.y = clamp(gpos.y, 0, gridzone.gridsize.y - 1)

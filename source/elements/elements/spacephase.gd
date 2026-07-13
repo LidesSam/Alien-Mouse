@@ -26,15 +26,26 @@ func _process(delta: float) -> void:
 	fsm.fsmUpdate(delta)
 
 func start_phase():
+	$explosionParticles.emitting=true
 	gridzone.hide()
 	$AnimationPlayer.play("OpenSpace")
 	start=true
 	
 func end_phase():
-	start=false
+	$ship.move_to_center_cell()
+	$explosionParticles.emitting=true
+	gridzone.hide()
+	$AnimationPlayer.play("CloseSpace")
+	
 	
 func phase_started():
 	return start==true and !$AnimationPlayer.is_playing()
 	
 func phase_ended():
-	return start==false
+	return !start
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if(anim_name=="CloseSpace"):
+		start = false
+	
